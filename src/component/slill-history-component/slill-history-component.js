@@ -8,15 +8,32 @@ import SkillHistoryItemComponent from './skill-history-item-component/skill-hist
 import history from '../../asset/skill-history';
 
 export default createReactClass({
-    render: ()=>{
+    getInitialState: function () {
+        return {
+            displayList: history
+        }
+    },
+    handleSearch: function (e) {
+        const  displayList = history.filter(it=>{
+            return it.name.indexOf(e.target.value)!=-1
+        });
+        this.setState({
+            displayList
+        })
+    },
+    render: function () {
         return (
-            <ul>
-                {
-                    history.map((item, index)=>{
-                        return <SkillHistoryItemComponent name={item.name} key={index}/>
-                    })
-                }
-            </ul>
+            <div>
+                <input type="text" onChange={this.handleSearch}/>
+                <ul>
+                    {
+                        this.state.displayList.map((item, index)=>{
+                            return <SkillHistoryItemComponent name={item.name} key={index}/>
+                        })
+                    }
+                </ul>
+
+            </div>
 
         )
     }

@@ -12,6 +12,12 @@ const list = [
         date: [
             ['2016', Infinity]
         ]
+    },
+    {
+        name: 'React',
+        date: [
+            ['2017', Infinity]
+        ]
     }
 ];
 
