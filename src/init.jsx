@@ -1,14 +1,24 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createReactClass from 'create-react-class';
-const HelloWorld = createReactClass({
+import TitleComponent from './component/title-component/title-component';
+import SkillHistoryComponent from './component/slill-history-component/slill-history-component'
+
+const RootComponent = createReactClass({
 	render: function() {
 		return (
-			<h1> Hello resume by react! </h1>
+			<h1> My name is {this.props.name} </h1>
 		);
 	}
 });
+
+
+
 ReactDOM.render(
-	<HelloWorld />,
-	document.getElementById('content')
+	<div>
+		<TitleComponent/>
+		<SkillHistoryComponent/>
+	</div>
+	,
+	document.getElementById('rootEl')
 );
