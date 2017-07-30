@@ -60,6 +60,21 @@ module.exports = {
 
 				],
 			},
+			{
+				test: /\.styl$/,
+				use: [
+					{
+						loader: 'style-loader'
+					},
+					{
+						loader: 'css-loader',
+                        options: { importLoaders: 1, modules: true },
+					},
+					{
+						loader: 'stylus-loader'
+					}
+				]
+			}
 		]
 	}
 };
