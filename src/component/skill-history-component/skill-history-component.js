@@ -7,7 +7,7 @@ import SkillHistoryItemComponent from './skill-history-item-component/skill-hist
 
 import history from '../../asset/skill-history';
 
-import skillHistoryStyl from './slill-history-component.styl';
+import skillHistoryStyl from './skill-history-component.styl';
 
 
 
