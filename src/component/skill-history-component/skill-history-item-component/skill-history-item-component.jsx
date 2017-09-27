@@ -8,11 +8,11 @@ export default class SkillHistoryItemComponent extends React.Component {
 				<div>
 					{this.props.name}
 				</div>
-				<ul>
+				<ul className="flex">
 					{
 						this.props.date.map((item, index) => {
 							return (
-								<li key={index}>
+								<li key={index}  >
 									<div className="flex">
 										{
 											item.map((date, i) => {
@@ -30,7 +30,6 @@ export default class SkillHistoryItemComponent extends React.Component {
 						})
 					}
 				</ul>
-
 			</li>
 		)
 	}

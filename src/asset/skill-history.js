@@ -5,6 +5,7 @@ const list = [
     {
         name: 'Angular',
         date: [
+            ['2015', null],
             ['2015', null]
         ]
     },{
