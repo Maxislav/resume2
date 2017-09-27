@@ -7,6 +7,11 @@ import history from '../../asset/skill-history';
 
 import skillHistoryStyl from './skill-history-component.styl';
 
+import $Promise from  '../../asset/promise'
+
+import { autobind } from 'core-decorators';
+
+
 
 
 /**
@@ -42,6 +47,8 @@ export default class SkillHistoryComponent extends React.Component {
 	constructor(props) {
 		super(props);
 		this._el = null;
+		this._width = 0;
+		this._widthPromise = new $Promise();
 		this.state = {
 			displayList: history
 		};
@@ -56,26 +63,31 @@ export default class SkillHistoryComponent extends React.Component {
 			displayList
 		})
 	}
+
+	@autobind
 	setElement(el){
 		this._el = el
 	}
 
 	componentDidMount(){
-		console.log(this._el.offsetWidth)
+		this._width = this._el.offsetWidth
+		this._widthPromise.resolve(this._el.offsetWidth)
 	}
 
 	render() {
 		return (
-			<div className={skillHistoryStyl.content} ref={this.setElement.bind(this)}>
-				<input type="text" onChange={this.handleSearch.bind(this)} className={skillHistoryStyl.input}/>
-				<div>
-					<ul>
-						{
-							this.state.displayList.map((item, index) => {
-								return <SkillHistoryItemComponent name={item.name} key={index} date={item.date} period=""/>
-							})
-						}
-					</ul>
+			<div className={skillHistoryStyl.content} >
+				<div ref={this.setElement}>
+					<input type="text" onChange={this.handleSearch.bind(this)} className={skillHistoryStyl.input}/>
+					<div>
+						<ul>
+							{
+								this.state.displayList.map((item, index) => {
+									return <SkillHistoryItemComponent name={item.name} key={index} date={item.date} total-width={this._widthPromise} min-date={getMinDate(history)}/>
+								})
+							}
+						</ul>
+					</div>
 				</div>
 			</div>
 		)
