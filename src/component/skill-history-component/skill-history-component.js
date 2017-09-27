@@ -19,7 +19,7 @@ export default createReactClass({
     },
     handleSearch: function (e) {
         const  displayList = history.filter(it=>{
-            return it.name.indexOf(e.target.value)!=-1
+            return it.name.toLowerCase().indexOf(e.target.value.toLowerCase())!=-1
         });
         this.setState({
             displayList
@@ -27,15 +27,17 @@ export default createReactClass({
     },
     render: function () {
         return (
-            <div>
+            <div className={skillHistoryStyl.content}>
                 <input type="text" onChange={this.handleSearch} className={skillHistoryStyl.input}/>
-                <ul>
-                    {
-                        this.state.displayList.map((item, index)=>{
-                            return <SkillHistoryItemComponent name={item.name} key={index}/>
-                        })
-                    }
-                </ul>
+                <div>
+                    <ul>
+			                {
+				                this.state.displayList.map((item, index)=>{
+					                return <SkillHistoryItemComponent name={item.name} key={index} date={item.date}/>
+				                })
+			                }
+                    </ul>
+                </div>
             </div>
         )
     }

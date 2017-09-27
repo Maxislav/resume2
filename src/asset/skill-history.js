@@ -5,18 +5,18 @@ const list = [
     {
         name: 'Angular',
         date: [
-            ['2015', Infinity]
+            ['2015', null]
         ]
     },{
         name: 'Angular2+',
         date: [
-            ['2016', Infinity]
+            ['2016', null]
         ]
     },
     {
         name: 'React',
         date: [
-            ['2017', Infinity]
+            ['2017', null]
         ]
     }
 ];

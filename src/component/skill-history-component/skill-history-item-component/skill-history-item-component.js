@@ -1,14 +1,37 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
 
 
-export default createReactClass({
-    render: function(){
-        return (
-            <li>
-                {this.props.name}
-            </li>
+export default class SkillHistoryItemComponent extends React.Component {
+	render() {
+		return (
+			<li>
+				<div>
+					{this.props.name}
+				</div>
+				<ul>
+					{
+						this.props.date.map((item, index) => {
+							return (
+								<li key={index}>
+									<div className="flex">
+										{
+											item.map((date, i) => {
+												const d = date ? new Date(date).toLocaleDateString() : new Date().toLocaleDateString();
+												return (
+													<div key={i} className="margin-0-8">
+														{d}
+													</div>
+												)
+											})
+										}
+									</div>
+								</li>
+							)
+						})
+					}
+				</ul>
 
-        )
-    }
-});
+			</li>
+		)
+	}
+}
