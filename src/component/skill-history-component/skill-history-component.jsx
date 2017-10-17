@@ -83,7 +83,7 @@ export default class SkillHistoryComponent extends React.Component {
 						<ul>
 							{
 								this.state.displayList.map((item, index) => {
-									return <SkillHistoryItemComponent name={item.name} key={index} date={item.date} total-width={this._widthPromise} min-date={getMinDate(history)}/>
+									return <SkillHistoryItemComponent name={item.name}  key={index} date={item.date} total-width={this._widthPromise} min-date={getMinDate(history)}/>
 								})
 							}
 						</ul>

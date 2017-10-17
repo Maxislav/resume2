@@ -46,16 +46,16 @@ export default class SkillHistoryItemComponent extends React.Component {
 
 	render() {
 		return (
-			<li>
+			<li className={SkillHistoryItemStyl['margin-5-0']}>
 				<div>
 					{this.props.name}
 				</div>
-				<ul className={SkillHistoryItemStyl.row} >
+				<ul className={SkillHistoryItemStyl.row}>
 					{
 						this.props.date.map((item, index) => {
 							return (
 								<li key={index}  ref={el=>this.getPositionLeft(el, item)} className={SkillHistoryItemStyl.it} onMouseEnter={this.handleHover} >
-									<div className="flex">
+									<div className="relative">
 										{
 											item.map((date, i) => {
 												const d = date ? new Date(date).toLocaleDateString() : new Date().toLocaleDateString();
