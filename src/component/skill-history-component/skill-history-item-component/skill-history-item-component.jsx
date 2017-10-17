@@ -32,14 +32,14 @@ export default class SkillHistoryItemComponent extends React.Component {
 			const date1 = new Date(date[0]);
 			const date2 = date[1] ? new Date(date[1]) : new Date();
 			const length = date2.getTime() - date1.getTime();
-			el.style.left = offset/scaleX +'px';
-			el.style.width = length/scaleX +'px';
+      if(el)	el.style.left = offset/scaleX +'px';
+			if(el) el.style.width = length/scaleX +'px';
 		})
 
 	}
 
 	handleHover(e){
-			console.log(e)
+			//console.log(e)
 	}
 
 
