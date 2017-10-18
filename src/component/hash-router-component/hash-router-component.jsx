@@ -2,30 +2,42 @@ import React from 'react';
 import hashRouterComponentStyl from "./hash-router-component.styl";
 import SkillHistoryComponent from '../skill-history-component/skill-history-component';
 import ExperienceComponent from  '../experience-component/experience-component';
-import { CSSTransition } from 'react-transition-group'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 import {
   BrowserRouter as Router,
   Route,
   NavLink,
   HashRouter,
   Redirect,
+  Switch
 
 } from 'react-router-dom';
 
-console.log(CSSTransition)
+//console.log(CSSTransition)
 
 
 class DefaultComponent extends React.Component{
   constructor(...args){
     super(...args)
-    console.log(this.props)
+
   }
-  render(){
+  render(p){
+    switch (this.props.match.params.l){
+      case 'experience':
+        this.childComponent =  ExperienceComponent;
+        break;
+      case  'itskill':
+        this.childComponent = SkillHistoryComponent
+        break
+    }
     return(
-      <Redirect to='/itskill'/>
+      <Route exact path={this.props.location.pathname} component={this.childComponent}/>
     )
   }
 }
+
+
+
 
 
 export default class HashRouterComponent extends React.Component{
@@ -41,11 +53,22 @@ export default class HashRouterComponent extends React.Component{
             <li><NavLink to="/itskill" activeStyle={{ background:'#bfe1ff' }}>IT skill</NavLink></li>
             <li><NavLink to="/experience" activeStyle={{ background:'#bfe1ff' }}>Experience</NavLink></li>
           </ul>
+          <div >
+            <Route render = {({location}) => (
+            <div className={this.css['route']}>
+              <Route exact path='/' render={() => (<Redirect to='/itskill'/>)}/>
+              <TransitionGroup>
+                <CSSTransition
+                  key={location.pathname}
+                  classNames='fade'
+                  timeout={{ enter: 500, exit: 500}}>
+                  <Route location={location} key={location.pathname} path="/:l" component={DefaultComponent} />
+                </CSSTransition>
+              </TransitionGroup>
 
-            <Route exact path="/itskill" component={SkillHistoryComponent}/>
-            <Route exact path="/experience" component={ExperienceComponent}/>
-            <Route exact path="/" component={DefaultComponent}/>
-
+            </div>
+            )}/>
+          </div>
         </div>
       </HashRouter>
 
