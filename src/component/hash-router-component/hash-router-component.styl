@@ -1,0 +1,15 @@
+@import "../../styl/constant.styl"
+.nav-bar
+  display flex
+  border-bottom 1px solid gray
+  &>li
+    display block
+    padding 8px 0
+    &>a[aria-current="true"]
+      background $color-active-bookmark
+    &>a
+      cursor pointer
+      padding 8px 15px
+
+      &:hover
+        background $color-hover-bookmark
