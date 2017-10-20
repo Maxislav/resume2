@@ -13,12 +13,13 @@ import {
 
 } from 'react-router-dom';
 
-//console.log(CSSTransition)
+
 
 
 class DefaultComponent extends React.Component{
   constructor(...args){
     super(...args)
+    this.childComponent = SkillHistoryComponent
 
   }
   render(p){
@@ -27,8 +28,10 @@ class DefaultComponent extends React.Component{
         this.childComponent =  ExperienceComponent;
         break;
       case  'itskill':
-        this.childComponent = SkillHistoryComponent
-        break
+        this.childComponent = SkillHistoryComponent;
+        break;
+      default:
+        //this.childComponent = SkillHistoryComponent
     }
     return(
       <Route exact path={this.props.location.pathname} component={this.childComponent}/>
@@ -59,13 +62,12 @@ export default class HashRouterComponent extends React.Component{
               <Route exact path='/' render={() => (<Redirect to='/itskill'/>)}/>
               <TransitionGroup>
                 <CSSTransition
-                  key={location.pathname}
+                  key={location.pathname || 'olol'}
                   classNames='fade'
                   timeout={{ enter: 500, exit: 500}}>
                   <Route location={location} key={location.pathname} path="/:l" component={DefaultComponent} />
                 </CSSTransition>
               </TransitionGroup>
-
             </div>
             )}/>
           </div>
