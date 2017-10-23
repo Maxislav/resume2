@@ -23,6 +23,7 @@ class DefaultComponent extends React.Component{
 
   }
   render(p){
+    //console.log(this.props.match.params.l)
     switch (this.props.match.params.l){
       case 'experience':
         this.childComponent =  ExperienceComponent;
@@ -31,6 +32,7 @@ class DefaultComponent extends React.Component{
         this.childComponent = SkillHistoryComponent;
         break;
       default:
+        return(<Redirect to='/itskill'/>)
         //this.childComponent = SkillHistoryComponent
     }
     return(
@@ -57,19 +59,22 @@ export default class HashRouterComponent extends React.Component{
             <li><NavLink to="/experience" activeStyle={{ background:'#bfe1ff' }}>Experience</NavLink></li>
           </ul>
           <div >
-            <Route render = {({location}) => (
-            <div className={this.css['route']}>
-              <Route exact path='/' render={() => (<Redirect to='/itskill'/>)}/>
-              <TransitionGroup>
-                <CSSTransition
-                  key={location.pathname || 'olol'}
-                  classNames='fade'
-                  timeout={{ enter: 500, exit: 500}}>
-                  <Route location={location} key={location.pathname} path="/:l" component={DefaultComponent} />
-                </CSSTransition>
-              </TransitionGroup>
-            </div>
-            )}/>
+            <Route render = {({location}) => {
+              if(location.pathname =='/'){
+                return (<Redirect to='/itskill'/>)
+              }
+              return (
+                <div className={this.css['route']}>
+                  <TransitionGroup>
+                    <CSSTransition
+                      key={location.pathname || 'olol'}
+                      classNames='fade'
+                      timeout={{ enter: 500, exit: 500}}>
+                      <Route location={location} key={location.pathname} path="/:l" component={DefaultComponent} />
+                    </CSSTransition>
+                  </TransitionGroup>
+                </div>
+            )}}/>
           </div>
         </div>
       </HashRouter>
