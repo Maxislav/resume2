@@ -2,7 +2,9 @@ import React from 'react';
 import hashRouterComponentStyl from "./hash-router-component.styl";
 import SkillHistoryComponent from '../skill-history-component/skill-history-component';
 import ExperienceComponent from  '../experience-component/experience-component';
-import { TransitionGroup, CSSTransition } from 'react-transition-group'
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
+
 import {
   BrowserRouter as Router,
   Route,

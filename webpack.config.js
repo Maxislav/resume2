@@ -18,6 +18,9 @@ module.exports = {
 		aggregateTimeout: 100
 	},
 	devtool: NODE_ENV == 'dev' ? 'source-map' : false,
+	devServer : {
+    contentBase: __dirname + '/src'
+	},
 	plugins: [
 
 		new webpack.DefinePlugin({
