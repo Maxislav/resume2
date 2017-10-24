@@ -4,7 +4,7 @@ import history from '../../asset/skill-history';
 import skillHistoryStyl from './skill-history-component.styl';
 import $Promise from  '../../asset/promise'
 import {autobind } from 'core-decorators';
-import  {connect} from 'react-redux'
+import {connect} from 'react-redux'
 import axios from 'axios'
 
 /**
@@ -35,6 +35,7 @@ console.log(minDate)
 
 @connect((store) => {
   return {
+  	filterBy:store.skillReducer.filterBy,
     history: store.skillReducer.history,
 		filterHistory: store.filterReducer.history
   }
@@ -56,10 +57,9 @@ export default class SkillHistoryComponent extends React.Component {
 		});
 
 		this.props.dispatch({
-			type: 'FILTER',
+			type: 'FILTER_HISTORY',
 			filterBy: e.target.value.toLowerCase(),
-      payload: this.props.history
-		})
+		});
 		this.setState({
 			displayList
 		})
@@ -70,6 +70,14 @@ export default class SkillHistoryComponent extends React.Component {
 		this._el = el;
   }
 
+  @autobind
+  onReset(e){
+    this.props.dispatch({
+      type: 'FILTER_HISTORY',
+      filterBy: '',
+    })
+	}
+
 	componentDidMount(e){
     this.props.dispatch({
       type:'FETCH_HISTORY',
@@ -79,14 +87,17 @@ export default class SkillHistoryComponent extends React.Component {
 	}
 
 	render() {
+		const button = <button onClick={this.onReset}>reset</button>
+
 		return (
 			<div className={skillHistoryStyl.content} >
 				<div ref={this.setElement}>
-					<input type="text" onChange={this.handleSearch} className={skillHistoryStyl.input}/>
+					<input type="text" onChange={this.handleSearch} className={skillHistoryStyl.input} value={this.props.filterBy}/>
+					{this.props.filterBy ? button : null}
 					<div>
 						<ul>
 							{
-								this.props.filterHistory.map((item, index) => {
+								this.props.history.map((item, index) => {
 									return <SkillHistoryItemComponent name={item.name}  key={index} date={item.date} total-width={this._widthPromise} min-date={getMinDate(history)}/>
 								})
 							}
