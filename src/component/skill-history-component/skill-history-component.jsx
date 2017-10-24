@@ -1,16 +1,56 @@
 import React from 'react';
-import createReactClass from 'create-react-class';
-
 import SkillHistoryItemComponent from './skill-history-item-component/skill-history-item-component';
-
 import history from '../../asset/skill-history';
-
 import skillHistoryStyl from './skill-history-component.styl';
-
 import $Promise from  '../../asset/promise'
-
 import { autobind } from 'core-decorators';
 
+import {applyMiddleware, combineReducers, createStore} from 'redux'
+import thunk from 'redux-thunk';
+import promise from 'redux-promise-middleware'
+import axios from 'axios'
+import { createLogger } from 'redux-logger';
+
+
+const logger = createLogger();
+const middleware =  applyMiddleware(promise(), thunk, logger);
+
+const initState = {
+	fetching: false,
+	error: null,
+	history: []
+}
+
+
+const skillReducer = (state = initState, action) =>{
+
+	switch (action.type){
+		case 'FETCH_HISTORY_PENDING': {
+			return {...state, fetching: false};
+		}
+		case 'FETCH_HISTORY_REJECTED': {
+			return {...state, fetching: false, error: action.payload};
+		}
+		case 'FETCH_HISTORY_FULFILLED': {
+			return {...state, fetching: true, history: action.payload};
+		}
+	}
+	return state
+}
+
+
+const reducers = combineReducers({
+  history: skillReducer,
+})
+
+
+const store = createStore( reducers, middleware );
+
+
+store.dispatch({
+  type:'FETCH_HISTORY',
+  payload: axios.get('asset/user.json')
+})
 
 
 
@@ -19,13 +59,10 @@ import { autobind } from 'core-decorators';
  * @return {Date}
  */
 const getMinDate = (list) =>{
-
 	let minDate = Infinity;
-
 	list.forEach(skillItem=>{
 		skillItem.date.forEach(d=>{
 			d.forEach(d=>{
-
 				if(d!==null){
 					const dateLong = new Date(d).getTime()
 					if(dateLong<minDate){
@@ -70,7 +107,6 @@ export default class SkillHistoryComponent extends React.Component {
 	}
 
 	componentDidMount(){
-		this._width = this._el.offsetWidth
 		this._widthPromise.resolve(this._el.offsetWidth)
 	}
 
