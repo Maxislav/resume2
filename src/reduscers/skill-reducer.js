@@ -6,7 +6,7 @@ let history = []
 const skillReducer = (state = initState, action) =>{
   switch (action.type){
     case 'FETCH_HISTORY_PENDING': {
-      return {...state, fetching: false};
+      return {...state, fetching: false, history};
     }
     case 'FETCH_HISTORY_REJECTED': {
       return {...state, fetching: false, error: action.payload};
