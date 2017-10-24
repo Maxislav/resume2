@@ -35,7 +35,8 @@ console.log(minDate)
 
 @connect((store) => {
   return {
-    history: store.history
+    history: store.skillReducer.history,
+		filterHistory: store.filterReducer.history
   }
 })
 export default class SkillHistoryComponent extends React.Component {
@@ -45,11 +46,20 @@ export default class SkillHistoryComponent extends React.Component {
 		super(props);
 		this._el = null;
 		this._widthPromise = new $Promise();
+		console.log(this.props)
 	}
+
+	@autobind
 	handleSearch(e) {
 		const displayList = this.props.history.filter(it => {
 			return it.name.toLowerCase().indexOf(e.target.value.toLowerCase()) != -1
 		});
+
+		this.props.dispatch({
+			type: 'FILTER',
+			filterBy: e.target.value.toLowerCase(),
+      payload: this.props.history
+		})
 		this.setState({
 			displayList
 		})
@@ -72,11 +82,11 @@ export default class SkillHistoryComponent extends React.Component {
 		return (
 			<div className={skillHistoryStyl.content} >
 				<div ref={this.setElement}>
-					<input type="text" onChange={this.handleSearch.bind(this)} className={skillHistoryStyl.input}/>
+					<input type="text" onChange={this.handleSearch} className={skillHistoryStyl.input}/>
 					<div>
 						<ul>
 							{
-								this.props.history.map((item, index) => {
+								this.props.filterHistory.map((item, index) => {
 									return <SkillHistoryItemComponent name={item.name}  key={index} date={item.date} total-width={this._widthPromise} min-date={getMinDate(history)}/>
 								})
 							}

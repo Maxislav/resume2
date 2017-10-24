@@ -1,12 +1,6 @@
-
-const initState = {
-  fetching: false,
-  error: null,
-  history: []
-}
+import initState from '../init-state-const';
 
 const skillReducer = (state = initState, action) =>{
-
   switch (action.type){
     case 'FETCH_HISTORY_PENDING': {
       return {...state, fetching: false};
@@ -19,6 +13,5 @@ const skillReducer = (state = initState, action) =>{
     }
   }
   return state
-}
-
+};
 export default skillReducer
