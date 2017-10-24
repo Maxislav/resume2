@@ -1,7 +1,7 @@
 import React from 'react';
 import TitleComponent from './component/title-component/title-component';
 import appStyl from './app.styl';
-
+import './styl/animation.styl'
 
 
 

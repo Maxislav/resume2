@@ -1,0 +1,31 @@
+:global
+  .fade-enter
+    transition opacity 0.5s
+    opacity 0
+    &.fade-enter-active
+      opacity 1
+  .fade-exit
+    transition opacity 0.5s
+    position absolute
+    width 100%
+    top 0
+    left 0
+    opacity 1
+    &.fade-exit-active
+      opacity 0
+  .repeat-enter
+    transition all 0.5s
+    overflow hidden
+    opacity 0
+    height 0
+    &.repeat-enter-active
+      height 45px
+      opacity 1
+  .repeat-exit
+    transition all 0.5s
+    height 45px
+    opacity 1
+    overflow hidden
+    &.repeat-exit-active
+      height 0
+      opacity 0

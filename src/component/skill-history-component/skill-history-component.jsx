@@ -6,6 +6,7 @@ import $Promise from  '../../asset/promise'
 import {autobind } from 'core-decorators';
 import {connect} from 'react-redux'
 import axios from 'axios'
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 /**
  * @param {Array.<SkillItem>}list
@@ -87,7 +88,8 @@ export default class SkillHistoryComponent extends React.Component {
 	}
 
 	render() {
-		const button = <button onClick={this.onReset}>reset</button>
+		const button = <button onClick={this.onReset}>reset</button>;
+
 
 		return (
 			<div className={skillHistoryStyl.content} >
@@ -95,13 +97,23 @@ export default class SkillHistoryComponent extends React.Component {
 					<input type="text" onChange={this.handleSearch} className={skillHistoryStyl.input} value={this.props.filterBy}/>
 					{this.props.filterBy ? button : null}
 					<div>
-						<ul>
+						<div>
+              <TransitionGroup>
 							{
 								this.props.history.map((item, index) => {
-									return <SkillHistoryItemComponent name={item.name}  key={index} date={item.date} total-width={this._widthPromise} min-date={getMinDate(history)}/>
+
+                  return<CSSTransition
+                    key={index}
+                    classNames='repeat'
+                    timeout={{ enter: 500, exit: 500}}>
+                    <div className="oloe">
+                          <SkillHistoryItemComponent name={item.name}  key={index} date={item.date} total-width={this._widthPromise} min-date={getMinDate(history)}/>
+                    </div>
+                    </CSSTransition>
 								})
 							}
-						</ul>
+              </TransitionGroup>
+						</div>
 					</div>
 				</div>
 			</div>
