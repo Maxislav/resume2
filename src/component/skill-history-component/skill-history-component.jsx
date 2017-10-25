@@ -8,6 +8,8 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
+console.log(skillHistoryStyl)
+
 /**
  * @param {Array.<SkillItem>}list
  * @return {Date}
@@ -28,9 +30,7 @@ const getMinDate = (list) =>{
 	});
 	return new Date(minDate)
 }
-const minDate = getMinDate(history)
 
-console.log(minDate)
 
 
 
@@ -82,41 +82,42 @@ export default class SkillHistoryComponent extends React.Component {
 	componentDidMount(e){
     this.props.dispatch({
       type:'FETCH_HISTORY',
-      payload: axios.get('asset/user.json')
+      payload: axios.get('asset/skill-history.json')
     });
 		this._widthPromise.resolve(this._el.offsetWidth)
 	}
 
-	render() {
-		const button = <button onClick={this.onReset}>reset</button>;
+  render() {
+    const button = <button onClick={this.onReset}>reset</button>;
 
 
-		return (
-			<div className={skillHistoryStyl.content} >
+    return (
+			<div className={skillHistoryStyl.content}>
 				<div ref={this.setElement}>
-					<input type="text" onChange={this.handleSearch} className={skillHistoryStyl.input} value={this.props.filterBy}/>
-					{this.props.filterBy ? button : null}
-					<div>
-						<div>
-              <TransitionGroup>
-							{
-								this.props.history.map((item, index) => {
+					<input type="text" onChange={this.handleSearch} className={skillHistoryStyl.input}
+								 placeholder="search filter"
+								 value={this.props.filterBy}/>
+          {this.props.filterBy ? button : null}
 
-                  return<CSSTransition
-                    key={index}
-                    classNames='repeat'
-                    timeout={{ enter: 500, exit: 500}}>
-                    <div className="oloe">
-                          <SkillHistoryItemComponent name={item.name}  key={index} date={item.date} total-width={this._widthPromise} min-date={getMinDate(history)}/>
-                    </div>
-                    </CSSTransition>
-								})
-							}
-              </TransitionGroup>
-						</div>
+					<div>
+						<TransitionGroup>
+              {
+                this.props.history.map((item, index) => {
+                  return <CSSTransition
+										key={index}
+										classNames='repeat'
+										timeout={{enter: 500, exit: 500}}>
+										<div className={skillHistoryStyl['history-row']}>
+											<SkillHistoryItemComponent name={item.name} key={index} date={item.date}
+																								 total-width={this._widthPromise} min-date={getMinDate(this.props.history)}/>
+										</div>
+									</CSSTransition>
+                })
+              }
+						</TransitionGroup>
 					</div>
 				</div>
 			</div>
-		)
-	}
+    )
+  }
 }

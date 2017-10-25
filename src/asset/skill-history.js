@@ -26,7 +26,8 @@ const list = [
         date: [
             ['2017', null]
         ]
-    }
+    },
+
 ];
 
 export default list;

@@ -4,6 +4,7 @@ import { autobind } from 'core-decorators';
 
 
 
+
 export default class SkillHistoryItemComponent extends React.Component {
 
 	/**
@@ -46,7 +47,7 @@ export default class SkillHistoryItemComponent extends React.Component {
 
 	render() {
 		return (
-			<li className={SkillHistoryItemStyl['margin-5-0']}>
+			<div>
 				<div>
 					{this.props.name}
 				</div>
@@ -72,7 +73,7 @@ export default class SkillHistoryItemComponent extends React.Component {
 							})
 					}
 				</ul>
-			</li>
+			</div>
 		)
 	}
 }
