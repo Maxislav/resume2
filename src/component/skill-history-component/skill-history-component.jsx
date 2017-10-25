@@ -8,7 +8,6 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
-console.log(skillHistoryStyl)
 
 /**
  * @param {Array.<SkillItem>}list

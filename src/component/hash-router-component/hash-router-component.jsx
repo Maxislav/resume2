@@ -2,6 +2,7 @@ import React from 'react';
 import hashRouterComponentStyl from "./hash-router-component.styl";
 import SkillHistoryComponent from '../skill-history-component/skill-history-component';
 import ExperienceComponent from  '../experience-component/experience-component';
+import GlComponent from '../gl-component/gl-component'
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 
 
@@ -33,6 +34,9 @@ class DefaultComponent extends React.Component{
       case  'itskill':
         this.childComponent = SkillHistoryComponent;
         break;
+      case  'gl':
+        this.childComponent = GlComponent;
+        break;
       default:
         return(<Redirect to='/itskill'/>)
         //this.childComponent = SkillHistoryComponent
@@ -59,6 +63,7 @@ export default class HashRouterComponent extends React.Component{
           <ul className={this.css['nav-bar']}>
             <li><NavLink to="/itskill" activeStyle={{ background:'#bfe1ff' }}>IT skill</NavLink></li>
             <li><NavLink to="/experience" activeStyle={{ background:'#bfe1ff' }}>Experience</NavLink></li>
+            <li><NavLink to="/gl" activeStyle={{ background:'#bfe1ff' }}>GL</NavLink></li>
           </ul>
           <div >
             <Route render = {({location}) => {
