@@ -1,55 +1,6 @@
 import {getWebGLContext, createShader, createProgram} from "./web-gL";
 
 
-function initVertexBuffers(gl, program) {
-  var vertexXYColor = new Float32Array([
-    -0.5, 0.5, 1.0, 0.0, 0.0, 1.0,
-    -0.5, -0.5, 0.0, 1.0, 0.0, 1.0,
-    0.5, -0.5, 0.0, 0.0, 1.0, 0.56,
-  ]);
-  var n = 3;
-
-  var sizeList = new Float32Array([
-    10.0,
-    20.0,
-    30.0
-  ])
-  const sizeBuffer =  gl.createBuffer();
-
-  gl.bindBuffer(gl.ARRAY_BUFFER, sizeBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, sizeList, gl.STATIC_DRAW)
-
-  const a_Size = gl.getAttribLocation(program, 'a_Size');
-  gl.vertexAttribPointer(a_Size, 1, gl.FLOAT, false, 0,0)
-  gl.enableVertexAttribArray(a_Size);
-
-
-
-  var vertexBuffer = gl.createBuffer();
-  if (!vertexBuffer) {
-    console.log('Failed to create the buffer object ');
-    return -1;
-  }
-  // Определить тип буферного объекта
-   gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
-   // Записать данные в буферный объект
-   gl.bufferData(gl.ARRAY_BUFFER, vertexXYColor, gl.STATIC_DRAW);
-
-  var FSIZE = vertexXYColor.BYTES_PER_ELEMENT;
-
-  console.log(FSIZE)
-
-
-  var a_Position = gl.getAttribLocation(program, 'a_Position');
-  gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, FSIZE*6, 0);
-  gl.enableVertexAttribArray(a_Position);
-
-  var a_Color = gl.getAttribLocation(program, 'a_Color');
-  gl.vertexAttribPointer(a_Color, 4, gl.FLOAT, false, FSIZE*6, FSIZE*2);
-  gl.enableVertexAttribArray(a_Color);
-
-  return n;
-}
 
 export default class HelloCanvas{
   constructor(canvasEl){
@@ -96,8 +47,55 @@ export default class HelloCanvas{
     gl.useProgram(program)
     //gl = program;
     gl.clear(gl.COLOR_BUFFER_BIT);
-    const n = initVertexBuffers(gl, program);
-    console.log(n)
+    //const n = initVertexBuffers(gl, program);
+
+
+    var vertexXYColor = new Float32Array([
+      -0.5, 0.5, 1.0, 0.0, 0.0, 1.0,
+      -0.5, -0.5, 0.0, 1.0, 0.0, 1.0,
+      0.5, -0.5, 0.0, 0.0, 1.0, 0.56,
+    ]);
+    var n = 3;
+
+    var sizeList = new Float32Array([
+      10.0,
+      20.0,
+      30.0
+    ])
+    const sizeBuffer =  gl.createBuffer();
+
+    gl.bindBuffer(gl.ARRAY_BUFFER, sizeBuffer);
+    gl.bufferData(gl.ARRAY_BUFFER, sizeList, gl.STATIC_DRAW)
+
+    const a_Size = gl.getAttribLocation(program, 'a_Size');
+    gl.vertexAttribPointer(a_Size, 1, gl.FLOAT, false, 0,0)
+    gl.enableVertexAttribArray(a_Size);
+
+
+
+    var vertexBuffer = gl.createBuffer();
+    if (!vertexBuffer) {
+      console.log('Failed to create the buffer object ');
+      return -1;
+    }
+    // Определить тип буферного объекта
+    gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
+    // Записать данные в буферный объект
+    gl.bufferData(gl.ARRAY_BUFFER, vertexXYColor, gl.STATIC_DRAW);
+
+    var FSIZE = vertexXYColor.BYTES_PER_ELEMENT;
+
+    console.log(FSIZE)
+
+
+    var a_Position = gl.getAttribLocation(program, 'a_Position');
+    gl.vertexAttribPointer(a_Position, 2, gl.FLOAT, false, FSIZE*6, 0);
+    gl.enableVertexAttribArray(a_Position);
+
+    var a_Color = gl.getAttribLocation(program, 'a_Color');
+    gl.vertexAttribPointer(a_Color, 4, gl.FLOAT, false, FSIZE*6, FSIZE*2);
+    gl.enableVertexAttribArray(a_Color);
+
     gl.drawArrays(gl.POINTS, 0, n);
 
 
