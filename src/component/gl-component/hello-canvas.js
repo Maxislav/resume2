@@ -1,5 +1,6 @@
 import {getWebGLContext, createShader, createProgram} from "./web-gL";
 
+import fadeCanvas from './fade-canvas'
 
 
 export default class HelloCanvas{
@@ -58,9 +59,9 @@ export default class HelloCanvas{
     var n = 3;
 
     var sizeList = new Float32Array([
-      10.0,
-      20.0,
-      30.0
+      1.0,
+      1.0,
+      1.0
     ])
     const sizeBuffer =  gl.createBuffer();
 
@@ -97,19 +98,12 @@ export default class HelloCanvas{
     gl.enableVertexAttribArray(a_Color);
 
     gl.drawArrays(gl.POINTS, 0, n);
+    //gl.deleteBuffer(sizeBuffer)
+
+    fadeCanvas(gl);
 
 
-    var pixelsUint8 = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
-    var pixelsFloat32 = new Float32Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
-    gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, gl.RGBA, gl.UNSIGNED_BYTE, pixelsUint8);
-    //console.log(new Flpixels)
-    pixelsFloat32 = new Float32Array(pixelsUint8)
-    console.log(pixelsFloat32)
 
-    const indexBuffer = gl.createBuffer()
-
-    gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, indexBuffer)
-    gl.bufferData(gl.ELEMENT_ARRAY_BUFFER, pixelsFloat32, gl.STATIC_DRAW);
 
     //var coord = gl.getAttribLocation(program, "coordinates");
     //gl.vertexAttribPointer(coord, 3, gl.FLOAT, false, 0, 0);
