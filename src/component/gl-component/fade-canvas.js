@@ -1,11 +1,6 @@
 import {getWebGLContext, createShader, createProgram} from "./web-gL";
 
-function getAttribLocation(name, pixelsFloat32, gl, program) {
-  const redBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, redBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, pixelsFloat32, gl.STREAM_DRAW);
-  return gl.getAttribLocation(program, name);
-}
+
 
 function createMatrixPosition(width, height) {
   let i = 0;
@@ -15,13 +10,27 @@ function createMatrixPosition(width, height) {
   while (i<length){
     const y = parseInt(i/width);
     const x = i - y*width;
-    positionList.push((x/(width/2))-1);
-    positionList.push(-1*((y/(height/2))-1));
+    positionList.push(((x+0.5)/(width/2))-1);
+    positionList.push((((y+0.5)/(height/2))-1));
     i++;
   }
   return new Float32Array(positionList)
 }
 
+
+function colored(gl, program) {
+  var pixelsUint8 = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
+  gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, gl.RGBA, gl.UNSIGNED_BYTE, pixelsUint8);
+  const pixelsFloat32 = new Float32Array(pixelsUint8)
+  //console.log(pixelsFloat32);
+  const colorBuffer = gl.createBuffer()
+  gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
+  gl.bufferData(gl.ARRAY_BUFFER, pixelsFloat32, gl.DYNAMIC_DRAW)
+  const a_Color =   gl.getAttribLocation(program, 'a_Color');
+  gl.vertexAttribPointer(a_Color, 4, gl.FLOAT, false, colorBuffer*4, 0);
+  gl.enableVertexAttribArray(a_Color);
+
+}
 
 function fadeCanvas(gl) {
 
@@ -31,18 +40,34 @@ function fadeCanvas(gl) {
   varying vec4 v_Color;
   varying float a_Index;
   
-  attribute float red;
-  attribute float green;
-  attribute float blue;
-  attribute float alpha;
+  varying float alpha;
+  varying float r;
+  varying float g;
+  varying float b;
+  attribute vec4 a_Color;
   
   void main(){
     a_Index;
+    a_Color;
     gl_Position = a_Position;
-    //gl_Position = vec4(0.0, 0.0 ,0.0 , 1.0);
     gl_PointSize = 1.0;
-    a_Index = red;
-    v_Color = vec4(red/255.0, 0, 0.0, 0.5);
+    alpha = a_Color.a - 1.0;
+    if (alpha < 0.0) {
+      alpha = 0.0;
+    }
+    r = a_Color.r - 1.0;
+    if (r < 0.0) {
+      r = 0.0;
+    }
+    g = a_Color.g - 1.0;
+    if (g < 0.0) {
+      g = 0.0;
+    } 
+    b = a_Color.b - 1.0;
+    if (b < 0.0) {
+      b = 0.0;
+    }
+    v_Color = vec4(r/255.0, g/255.0, b/255.0, alpha/255.0);
   }
   `;
 
@@ -60,26 +85,6 @@ function fadeCanvas(gl) {
   gl.useProgram(program)
 
 
-  var pixelsUint8 = new Uint8Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
-  var pixelsFloat32 = new Float32Array(gl.drawingBufferWidth * gl.drawingBufferHeight * 4);
-  gl.readPixels(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight, gl.RGBA, gl.UNSIGNED_BYTE, pixelsUint8);
-  //console.log(new Flpixels)
-  pixelsFloat32 = new Float32Array(pixelsUint8)
-  console.log(pixelsFloat32);
-
-  /*const redBuffer = gl.createBuffer();
-  gl.bindBuffer(gl.ARRAY_BUFFER, redBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, pixelsFloat32, gl.STATIC_DRAW);*/
-  //const red = getAttribLocation('red', pixelsFloat32, gl, program);
-
-  const redBuffer = gl.createBuffer()
-  gl.bindBuffer(gl.ARRAY_BUFFER, redBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, pixelsFloat32, gl.STATIC_DRAW)
-  const red = getAttribLocation('red', pixelsFloat32, gl, program)
-
-  gl.vertexAttribPointer(red, 1, gl.FLOAT, false, redBuffer*3, 0);
-  gl.enableVertexAttribArray(red);
-  //gl.drawArrays(gl.POINTS, 0, gl.drawingBufferWidth * gl.drawingBufferHeight);
 
   const positionFloat32 = createMatrixPosition(gl.drawingBufferWidth, gl.drawingBufferHeight)
   const positionPuffer = gl.createBuffer();
@@ -90,9 +95,23 @@ function fadeCanvas(gl) {
   gl.enableVertexAttribArray(a_Position);
 
 
-  gl.drawArrays(gl.POINTS, 0, gl.drawingBufferWidth * gl.drawingBufferHeight/2);
+  colored(gl, program)
 
-
+  gl.clearColor(0.0, 0.0, 0.0, 1.0);
+  gl.clear(gl.COLOR_BUFFER_BIT);
+  gl.drawArrays(gl.POINTS, 0, gl.drawingBufferWidth * gl.drawingBufferHeight);
+let k = 0
+ const interval = setInterval(()=>{
+    colored(gl, program)
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    gl.clear(gl.COLOR_BUFFER_BIT);
+    gl.drawArrays(gl.POINTS, 0, gl.drawingBufferWidth * gl.drawingBufferHeight);
+    k++
+   if(k > 400){
+      clearInterval(interval)
+     console.log('stop')
+   }
+  }, 20)
  // console.log(positionFloat32)
 }
 
