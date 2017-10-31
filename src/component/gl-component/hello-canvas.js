@@ -1,12 +1,12 @@
-import {getWebGLContext, createShader, createProgram} from "./web-gL";
+import {getWebGLContext, createShader, createProgram} from "../../asset/web-gL";
 
 import fadeCanvas from './fade-canvas'
 
 
 export default class HelloCanvas{
   constructor(canvasEl){
-    const gl = getWebGLContext(canvasEl, true);
-    gl.clearColor(0.0, 0.0, 0.0, 0.0);
+    const gl = getWebGLContext(canvasEl, {preserveDrawingBuffer: true});
+    gl.clearColor(0.0, 0.0, 0.0, 1.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.blendFunc(gl.SRC_ALPHA, gl.ONE);
     gl.enable(gl.BLEND);
@@ -99,7 +99,7 @@ export default class HelloCanvas{
 
     gl.drawArrays(gl.POINTS, 0, 3);
     //gl.deleteBuffer(sizeBuffer)
-    fadeCanvas(gl);
+    //fadeCanvas(gl);
    /* setTimeout(()=>{
       fadeCanvas(gl);
     }, 1000)

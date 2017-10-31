@@ -1,6 +1,6 @@
 /**
  * @param {HTMLCanvasElement} canvas
- * @param {boolean} debug
+ * @param {Object} debug
  * @return {(WebGLRenderingContext|null)}
  */
 export function getWebGLContext(canvas, debug) {
@@ -8,7 +8,7 @@ export function getWebGLContext(canvas, debug) {
 
   try {
     // Попытаться получить стандартный контекст. Если не получится, попробовать получить экспериментальный.
-    gl = canvas.getContext("webgl", {preserveDrawingBuffer: true}) || canvas.getContext("experimental-webgl", debug);
+    gl = canvas.getContext("webgl", debug) || canvas.getContext("experimental-webgl", debug);
   }
   catch(e) {}
 

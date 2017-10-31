@@ -1,4 +1,4 @@
-import {getWebGLContext, createShader, createProgram} from "./web-gL";
+import {getWebGLContext, createShader, createProgram} from "../../asset/web-gL";
 
 
 
