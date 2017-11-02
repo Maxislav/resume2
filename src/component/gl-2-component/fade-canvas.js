@@ -28,16 +28,15 @@ function colored(gl, program) {
   //console.log(pixelsFloat32);
   const colorBuffer = gl.createBuffer()
   gl.bindBuffer(gl.ARRAY_BUFFER, colorBuffer);
-  gl.bufferData(gl.ARRAY_BUFFER, pixelsFloat32, gl.DYNAMIC_DRAW)
+  gl.bufferData(gl.ARRAY_BUFFER, pixelsUint8, gl.DYNAMIC_DRAW)
   const a_Color =   gl.getAttribLocation(program, 'a_Color');
-  gl.vertexAttribPointer(a_Color, 4, gl.FLOAT, false, colorBuffer*4, 0);
+  gl.vertexAttribPointer(a_Color, 4, gl.UNSIGNED_BYTE, false, colorBuffer*4, 0);
   gl.enableVertexAttribArray(a_Color);
 
 }
 
-class FadeCanvas {
-  constructor(canvasEl) {
-    const gl = getWebGLContext(canvasEl, {preserveDrawingBuffer: true});
+export class FadeCanvas {
+  constructor(gl) {
     this.gl = gl;
 
     const FSIZE = 4;
@@ -57,7 +56,7 @@ class FadeCanvas {
           a_Color;
           gl_Position = a_Position;
           gl_PointSize = 1.0;
-          alpha = a_Color.a - 1.0;
+          alpha = a_Color.a - 20.0;
           if (alpha < 0.0) {
             alpha = 0.0;
           }
@@ -73,7 +72,8 @@ class FadeCanvas {
           if (b < 0.0) {
             b = 0.0;
           }
-          v_Color = vec4(r/255.0, g/255.0, b/255.0, alpha/255.0);
+          //v_Color = vec4(a_Color.r/255.0, a_Color.g/255.0, a_Color.b/255.0, alpha/255.0);
+          v_Color = vec4(0.0, 0.5, 0.5, 1.0);
         }
       `;
 
@@ -89,8 +89,8 @@ class FadeCanvas {
     const fShader = createShader(gl, gl.FRAGMENT_SHADER, FSHADER_SOURCE);
     const program = createProgram(gl, vShader, fShader)
 
-    gl.useProgram(program)
-    return;
+    //gl.useProgram(program)
+   // return;
 
     this.program = program
 
@@ -130,19 +130,18 @@ class FadeCanvas {
   fade() {
     const gl = this.gl;
     const program = this.program;
-
+    gl.useProgram(program)
     gl.bindBuffer(gl.ARRAY_BUFFER, this.positionPuffer);
     gl.bufferData(gl.ARRAY_BUFFER, this.positionFloat32, gl.STATIC_DRAW);
     gl.vertexAttribPointer(this.a_Position, 2, gl.FLOAT, false, this.positionPuffer.BYTES_PER_ELEMENT*2, 0);
     gl.enableVertexAttribArray(this.a_Position);
 
     colored(gl, program)
-    gl.clearColor(0.0, 0.0, 0.0, 1.0);
+    gl.clearColor(0.0, 0.0, 0.0, 0.0);
     gl.clear(gl.COLOR_BUFFER_BIT);
     gl.drawArrays(gl.POINTS, 0, gl.drawingBufferWidth * gl.drawingBufferHeight);
   }
 
 }
 
-export default FadeCanvas
 

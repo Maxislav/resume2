@@ -89,7 +89,6 @@ export class Matrix {
       for(let i = 0 ; i< this.m.length; i+=6){
         const x = this.m[i];
         const y = this.m[i+1];
-
         if(Matrix.isCath(x, y , this.dripList) ){
           this.m[i+5] = 1.0
         }else{
@@ -100,7 +99,7 @@ export class Matrix {
         }
 
       }
-      this.drip.slip(4)
+     // this.drip.slip(4)
     this.dripList.forEach(it=>{
       it.slip(4)
     })
