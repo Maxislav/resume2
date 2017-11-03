@@ -6,14 +6,15 @@ import {FadeCanvas} from "./fade-canvas";
 export default class RainCanvas {
   constructor(canvasEl) {
 
-    const gl = getWebGLContext(canvasEl, {preserveDrawingBuffer: true});
+    const gl = getWebGLContext(canvasEl, {preserveDrawingBuffer: false});
 
-    gl.clearColor(0.0, 0.0, 0.0, 0.0);
+    gl.clearColor(0,0,0,0);
+    //gl.colorMask(false, false, false, true);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     gl.enable(gl.BLEND);
     gl.blendEquation( gl.FUNC_ADD );
-    gl.blendFunc( gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA );
+    gl.blendFunc(gl.ONE, gl.ONE);
 
     const VSHADER_SOURCE =`
       attribute vec4 a_Position;
@@ -22,7 +23,7 @@ export default class RainCanvas {
       
        void main() {
           gl_Position = a_Position; 
-          gl_PointSize = 4.0;
+          gl_PointSize = 2.0;
           v_Color = a_Color;
           
        }
@@ -46,7 +47,7 @@ export default class RainCanvas {
         list.push(new Drip(gl).useProgram(program))
       }
       return list
-    })(10);
+    })(1000);
 
     gl.useProgram(program);
    /* dripList.forEach((drip, i) => {

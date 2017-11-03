@@ -119,10 +119,10 @@ export class Drip extends Array{
     }
 
     gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexPositionBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.concat(...this.tail)), gl.DYNAMIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this), gl.DYNAMIC_DRAW);
 
     gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexColorBuffer);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this.concat(...this.tail)), gl.DYNAMIC_DRAW);
+    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(this), gl.DYNAMIC_DRAW);
 
 
     if(!this.a_Position){
@@ -136,7 +136,7 @@ export class Drip extends Array{
     }
     gl.vertexAttribPointer(this.a_Position, 2, gl.FLOAT, false, 4*6, 0);
     gl.vertexAttribPointer(this.a_Color, 4, gl.FLOAT, false, 4*6, 2*4);
-    return this.tail.length
+    return 1
   }
 
 }
