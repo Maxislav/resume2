@@ -8,13 +8,14 @@ export default class RainCanvas {
 
     const gl = getWebGLContext(canvasEl, {preserveDrawingBuffer: false});
 
-    gl.clearColor(0,0,0,0);
+    gl.clearColor(0.0,0.0,0.0,0.0);
     //gl.colorMask(false, false, false, true);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     gl.enable(gl.BLEND);
     gl.blendEquation( gl.FUNC_ADD );
-    gl.blendFunc(gl.ONE, gl.ONE);
+   gl.blendFunc(gl.ONE, gl.ONE);
+  //  gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
 
     const VSHADER_SOURCE =`
       attribute vec4 a_Position;
