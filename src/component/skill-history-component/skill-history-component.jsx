@@ -88,11 +88,12 @@ export default class SkillHistoryComponent extends React.Component {
 
   render() {
     const button = <button onClick={this.onReset}>reset</button>;
-
     return (
-
 			<div className={skillHistoryStyl.content}>
+				<h2>Base libs & frameworks(simple view)</h2>
 				<SkillHistorySimpleComponent/>
+				<h2>&nbsp;</h2>
+				<h2>Base libs & frameworks(detail view)</h2>
 				<div ref={this.setElement}>
 					<input type="text" onChange={this.handleSearch} className={skillHistoryStyl.input}
 								 placeholder="search filter"

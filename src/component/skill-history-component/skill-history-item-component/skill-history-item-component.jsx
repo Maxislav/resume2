@@ -49,7 +49,7 @@ export default class SkillHistoryItemComponent extends React.Component {
 		return (
 			<div>
 				<div>
-					{this.props.name}
+					<b>{this.props.name}</b>
 				</div>
 				<ul className={SkillHistoryItemStyl.row}>
 					{
