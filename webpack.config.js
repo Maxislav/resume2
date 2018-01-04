@@ -29,12 +29,17 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, './index.pug')
 		}),
-		/*new CopyWebpackPlugin([
+		new CopyWebpackPlugin([
 			{
 				from:'./src/img',
 				to:'./img'
+			},
+			{
+				from: './src/libs',
+				to:'./libs'
 			}
-		])*/
+
+		])
 	],
 	resolve: {
 		extensions: ['.js', '.jsx']
