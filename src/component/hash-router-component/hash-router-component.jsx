@@ -16,6 +16,7 @@ import {
   Switch
 
 } from 'react-router-dom';
+import ContactComponent from "../contact-component/contact-component";
 
 
 
@@ -34,6 +35,9 @@ class DefaultComponent extends React.Component{
         break;
       case  'itskill':
         this.childComponent = SkillHistoryComponent;
+        break;
+      case  'contact':
+        this.childComponent = ContactComponent;
         break;
       case  'gl':
         this.childComponent = GlComponent;
@@ -67,6 +71,7 @@ export default class HashRouterComponent extends React.Component{
           <ul className={this.css['nav-bar']}>
             <li><NavLink to="/itskill" activeStyle={{ background:'#bfe1ff' }}>IT skill</NavLink></li>
             <li><NavLink to="/experience" activeStyle={{ background:'#bfe1ff' }}>Experience</NavLink></li>
+            <li><NavLink to="/contact" activeStyle={{ background:'#bfe1ff' }}>Contact</NavLink></li>
             {/*<li><NavLink to="/gl" activeStyle={{ background:'#bfe1ff' }}>GL</NavLink></li>*/}
             {/*<li><NavLink to="/rain" activeStyle={{ background:'#bfe1ff' }}>Rain</NavLink></li>*/}
           </ul>
