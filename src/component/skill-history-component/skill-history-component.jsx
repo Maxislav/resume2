@@ -1,5 +1,6 @@
 import React from 'react';
 import SkillHistoryItemComponent from './skill-history-item-component/skill-history-item-component';
+import SkillHistorySimpleComponent from './skill-history-simple-component/skill-history-simple-component';
 import skillHistoryStyl from './skill-history-component.styl';
 import $Promise from  '../../asset/promise'
 import {autobind } from 'core-decorators';
@@ -88,9 +89,10 @@ export default class SkillHistoryComponent extends React.Component {
   render() {
     const button = <button onClick={this.onReset}>reset</button>;
 
-
     return (
+
 			<div className={skillHistoryStyl.content}>
+				<SkillHistorySimpleComponent/>
 				<div ref={this.setElement}>
 					<input type="text" onChange={this.handleSearch} className={skillHistoryStyl.input}
 								 placeholder="search filter"

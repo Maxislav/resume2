@@ -35,6 +35,10 @@ module.exports = {
 				to:'./img'
 			},
 			{
+				from: './src/asset/skill-history.json',
+				to:'./asset'
+			},
+			{
 				from: './src/libs',
 				to:'./libs'
 			}
