@@ -1,15 +1,9 @@
 import React from "react";
 import styl from './contact-component.styl';
-import defineload from "../../asset/defineload"
+import defineload from "../../asset/defineload";
+import ContactInfoComponent from './contact-info-component/contact-info-component'
 
 const {Component} = React;
-
-const contactData = [
-  ['Maxim Lipatov'],
-  ['Address', 'Kyiv, Ukraine'],
-  ['Phone number', '+38066-593-0939'],
-  ['E-mail', 'maximmalyshyn@gmail.com']
-];
 
 
 export default class ContactComponent extends Component{
@@ -57,29 +51,7 @@ export default class ContactComponent extends Component{
   render() {
     return (
       <div className={styl['contact-component']}>
-        <table className={styl['contact-table']}>
-          <tbody>
-          {
-            contactData.map((contact, index) => {
-              return <tr key={index}>
-                {
-                  contact.map((item, index2) => {
-                    if (index == 0) {
-                      return <td colSpan="2" key={index2} className={styl['my-name']}>
-                        {item}
-                      </td>
-                    }
-                    return <td key={index2}>
-                      {item}
-                    </td>
-
-                  })
-                }
-              </tr>
-            })
-          }
-          </tbody>
-        </table>
+         <ContactInfoComponent/>
         <div ref={el => this.leafletDefine(el)} className={styl.map}>
         </div>
       </div>

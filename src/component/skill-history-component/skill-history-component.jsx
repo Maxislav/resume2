@@ -1,12 +1,13 @@
 import React from 'react';
 import SkillHistoryItemComponent from './skill-history-item-component/skill-history-item-component';
 import SkillHistorySimpleComponent from './skill-history-simple-component/skill-history-simple-component';
-import skillHistoryStyl from './skill-history-component.styl';
+import styl from './skill-history-component.styl';
 import $Promise from  '../../asset/promise'
 import {autobind } from 'core-decorators';
 import {connect} from 'react-redux'
 import axios from 'axios'
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
+import ContactInfoComponent from '../../component/contact-component/contact-info-component/contact-info-component'
 
 
 /**
@@ -78,6 +79,8 @@ export default class SkillHistoryComponent extends React.Component {
     })
 	}
 
+
+
 	componentDidMount(e){
     this.props.dispatch({
       type:'FETCH_HISTORY',
@@ -89,13 +92,22 @@ export default class SkillHistoryComponent extends React.Component {
   render() {
     const button = <button onClick={this.onReset}>reset</button>;
     return (
-			<div className={skillHistoryStyl.content}>
-				<h2>Base libs & frameworks(simple view)</h2>
-				<SkillHistorySimpleComponent/>
+			<div className={styl.content}>
+				<div className="flex">
+					<div>
+						<ContactInfoComponent/>
+					</div>
+				</div>
 				<h2>&nbsp;</h2>
-				<h2>Base libs & frameworks(detail view)</h2>
+				<div>
+					<h3>Base libs & frameworks(simple view)</h3>
+					<SkillHistorySimpleComponent/>
+				</div>
+
+				<h2>&nbsp;</h2>
+				<h3>Base libs & frameworks(detail view)</h3>
 				<div ref={this.setElement}>
-					<input type="text" onChange={this.handleSearch} className={skillHistoryStyl.input}
+					<input type="text" onChange={this.handleSearch} className={styl.input}
 								 placeholder="search filter"
 								 value={this.props.filterBy}/>
           {this.props.filterBy ? button : null}
@@ -108,7 +120,7 @@ export default class SkillHistoryComponent extends React.Component {
 										key={index}
 										classNames='repeat'
 										timeout={{enter: 500, exit: 500}}>
-										<div className={skillHistoryStyl['history-row']}>
+										<div className={styl['history-row']}>
 											<SkillHistoryItemComponent name={item.name} key={index} date={item.date}
 																								 total-width={this._widthPromise} min-date={getMinDate(this.props.history)}/>
 										</div>

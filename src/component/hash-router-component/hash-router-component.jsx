@@ -1,5 +1,5 @@
 import React from 'react';
-import hashRouterComponentStyl from "./hash-router-component.styl";
+import styl from "./hash-router-component.styl";
 import SkillHistoryComponent from '../skill-history-component/skill-history-component';
 import ExperienceComponent from  '../experience-component/experience-component';
 import GlComponent from '../gl-component/gl-component'
@@ -17,6 +17,7 @@ import {
 
 } from 'react-router-dom';
 import ContactComponent from "../contact-component/contact-component";
+import {posXY, windowSize} from "../../asset/position";
 
 
 
@@ -60,28 +61,38 @@ class DefaultComponent extends React.Component{
 
 
 export default class HashRouterComponent extends React.Component{
-  css = hashRouterComponentStyl;
+  scrollEl;
+
   constructor(...args){
     super(...args)
   }
+
+  componentDidMount(e){
+
+    console.log('->>>',)
+    const height = windowSize().height - posXY(this.scrollEl).y
+    this.scrollEl.style.height = height+'px'
+
+  }
+
   render() {
     return (
       <HashRouter >
         <div>
-          <ul className={this.css['nav-bar']}>
+          <ul className={styl['nav-bar']}>
             <li><NavLink to="/itskill" activeStyle={{ background:'#fff' }}>IT skill</NavLink></li>
             <li><NavLink to="/experience" activeStyle={{ background:'#fff' }}>Experience</NavLink></li>
             <li><NavLink to="/contact" activeStyle={{ background:'#fff' }}>Contact</NavLink></li>
             {/*<li><NavLink to="/gl" activeStyle={{ background:'#bfe1ff' }}>GL</NavLink></li>*/}
             {/*<li><NavLink to="/rain" activeStyle={{ background:'#bfe1ff' }}>Rain</NavLink></li>*/}
           </ul>
-          <div >
+          <div ref={el=>this.scrollEl=el} className={styl.scroll}>
             <Route render = {({location}) => {
               if(location.pathname =='/'){
                 return (<Redirect to='/itskill'/>)
               }
               return (
-                <div className={this.css['route']}>
+                <div className={styl['route']}>
                   <TransitionGroup>
                     <CSSTransition
                       key={location.pathname || 'olol'}

@@ -1,0 +1,13 @@
+.my-name
+  text-align center
+  font-weight bold
+.contact-table
+  margin 0 auto
+  td
+    padding 5px 15px
+  td:nth-child(1)
+    &:not(.my-name)
+      width 50%
+      text-align right
+      &:after
+        content ":"
