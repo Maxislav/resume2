@@ -6,16 +6,21 @@ import {FadeCanvas} from "./fade-canvas";
 export default class RainCanvas {
   constructor(canvasEl) {
 
-    const gl = getWebGLContext(canvasEl, {preserveDrawingBuffer: false});
+    const gl = getWebGLContext(canvasEl, {preserveDrawingBuffer: true});
+    //gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
 
-    gl.clearColor(0.0,0.0,0.0,0.0);
+    gl.clearColor(0,0,0,0.0);
     //gl.colorMask(false, false, false, true);
+
     gl.clear(gl.COLOR_BUFFER_BIT);
 
     gl.enable(gl.BLEND);
-    gl.blendEquation( gl.FUNC_ADD );
-   gl.blendFunc(gl.ONE, gl.ONE);
-  //  gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+    gl.blendFunc(gl.ZERO, gl.CONSTANT_ALPHA);
+
+    gl.blendEquation( gl.FUNC_ADD);
+    //gl.blendFuncSeparate(gl.ONE, gl.ONE_MINUS_SRC_ALPHA, gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+    gl.blendFuncSeparate(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA, gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
 
     const VSHADER_SOURCE =`
       attribute vec4 a_Position;
@@ -24,7 +29,7 @@ export default class RainCanvas {
       
        void main() {
           gl_Position = a_Position; 
-          gl_PointSize = 2.0;
+          gl_PointSize = 20.0;
           v_Color = a_Color;
           
        }
@@ -51,25 +56,22 @@ export default class RainCanvas {
     })(1000);
 
     gl.useProgram(program);
-   /* dripList.forEach((drip, i) => {
+    dripList.forEach((drip, i) => {
       const count = drip.slip(0.3+(i*0.01));
       gl.drawArrays(gl.POINTS, 0, count);
-    });*/
-    const fadeCanvas = new FadeCanvas(gl)
+    });
 
-    //gl.clear(gl.COLOR_BUFFER_BIT);
     function action() {
-      //fadeCanvas.fade()
-
-      gl.clear(gl.COLOR_BUFFER_BIT);
+      var a = 1;
+      //gl.clear(gl.COLOR_BUFFER_BIT)
       dripList.forEach((drip, i) => {
-        const count = drip.slip(0.3+(i*0.01));
+        const count = drip.slip(0.3);
         gl.drawArrays(gl.POINTS, 0, count);
       });
 
       requestAnimationFrame(action)
     }
-    action()
+   // action()
 
 
 

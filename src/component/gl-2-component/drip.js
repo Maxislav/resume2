@@ -55,7 +55,7 @@ export class Drip extends Array{
     this[2] = 0;
     this[3] = 1;
     this[4] = 0;
-    this[5] = 1;
+    this[5] = 0.5;
     this.tail = [];
   }
 
