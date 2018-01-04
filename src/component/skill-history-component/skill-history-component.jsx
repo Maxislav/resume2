@@ -1,6 +1,5 @@
 import React from 'react';
 import SkillHistoryItemComponent from './skill-history-item-component/skill-history-item-component';
-import history from '../../asset/skill-history';
 import skillHistoryStyl from './skill-history-component.styl';
 import $Promise from  '../../asset/promise'
 import {autobind } from 'core-decorators';

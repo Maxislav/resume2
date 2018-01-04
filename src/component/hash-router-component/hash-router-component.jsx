@@ -69,9 +69,9 @@ export default class HashRouterComponent extends React.Component{
       <HashRouter >
         <div>
           <ul className={this.css['nav-bar']}>
-            <li><NavLink to="/itskill" activeStyle={{ background:'#bfe1ff' }}>IT skill</NavLink></li>
-            <li><NavLink to="/experience" activeStyle={{ background:'#bfe1ff' }}>Experience</NavLink></li>
-            <li><NavLink to="/contact" activeStyle={{ background:'#bfe1ff' }}>Contact</NavLink></li>
+            <li><NavLink to="/itskill" activeStyle={{ background:'#fff' }}>IT skill</NavLink></li>
+            <li><NavLink to="/experience" activeStyle={{ background:'#fff' }}>Experience</NavLink></li>
+            <li><NavLink to="/contact" activeStyle={{ background:'#fff' }}>Contact</NavLink></li>
             {/*<li><NavLink to="/gl" activeStyle={{ background:'#bfe1ff' }}>GL</NavLink></li>*/}
             {/*<li><NavLink to="/rain" activeStyle={{ background:'#bfe1ff' }}>Rain</NavLink></li>*/}
           </ul>

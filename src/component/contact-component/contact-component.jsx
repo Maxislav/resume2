@@ -6,7 +6,7 @@ const {Component} = React;
 
 const contactData = [
   ['Maxim Lipatov'],
-  ['Address', 'Ukraine, Kyiv'],
+  ['Address', 'Kyiv, Ukraine'],
   ['Phone number', '+38066-593-0939'],
   ['E-mail', 'maximmalyshyn@gmail.com']
 ];

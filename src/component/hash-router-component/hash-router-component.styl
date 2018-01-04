@@ -1,15 +1,23 @@
 @import "../../styl/constant.styl"
 .nav-bar
   display flex
-  border-bottom 1px solid gray
+  background: linear-gradient(to right, rgba(134,174,204,1) 0%,rgba(212,228,239,1) 100%);
   &>li
     display block
     padding 8px 0
+    &>a
+      font-weight bold
+      color black
+      background rgba(212,228,239,1)
+      border-radius 0  10px 0 0
+      border-right 1px solid gray
+    &>a:not(:hover)
+      text-decoration none
     &>a[aria-current="true"]
       background $color-active-bookmark
     &>a
       cursor pointer
-      padding 8px 15px
+      padding 9px 15px
       &:hover
         background $color-hover-bookmark
 
