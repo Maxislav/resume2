@@ -38,7 +38,7 @@ const getMinDate = (list) =>{
   return {
   	filterBy:store.skillReducer.filterBy,
     history: store.skillReducer.history,
-		filterHistory: store.filterReducer.history
+		filterHistory: store.filterReducer.history,
   }
 })
 export default class SkillHistoryComponent extends React.Component {
@@ -48,7 +48,9 @@ export default class SkillHistoryComponent extends React.Component {
 		super(props);
 		this._el = null;
 		this._widthPromise = new $Promise();
-		console.log(this.props)
+		this.state = {
+			shortView : false
+    }
 	}
 
 	@autobind
@@ -61,9 +63,9 @@ export default class SkillHistoryComponent extends React.Component {
 			type: 'FILTER_HISTORY',
 			filterBy: e.target.value.toLowerCase(),
 		});
-		this.setState({
+		/*this.setState({
 			displayList
-		})
+		})*/
 	}
 
 	@autobind
@@ -81,6 +83,18 @@ export default class SkillHistoryComponent extends React.Component {
 
 
 
+
+  @autobind
+	onSimpleDetailView(){
+  	this.setState({
+      shortView: !this.state.shortView
+		})
+	}
+
+
+
+
+
 	componentDidMount(e){
     this.props.dispatch({
       type:'FETCH_HISTORY',
@@ -93,43 +107,49 @@ export default class SkillHistoryComponent extends React.Component {
     const button = <button onClick={this.onReset}>reset</button>;
     return (
 			<div className={styl.content}>
-				<div className="flex">
-					<div>
-						<ContactInfoComponent/>
-					</div>
-				</div>
-				<h2>&nbsp;</h2>
 				<div>
-					<h3>Base libs & frameworks(simple view)</h3>
-					<SkillHistorySimpleComponent/>
+					<ContactInfoComponent/>
 				</div>
+				<button onClick={this.onSimpleDetailView}>{!this.state.shortView ? 'Simple view': 'Detail list'}</button>
 
 				<h2>&nbsp;</h2>
-				<h3>Base libs & frameworks(detail view)</h3>
-				<div ref={this.setElement}>
-					<input type="text" onChange={this.handleSearch} className={styl.input}
-								 placeholder="search filter"
-								 value={this.props.filterBy}/>
-          {this.props.filterBy ? button : null}
 
-					<div>
-						<TransitionGroup>
-              {
-                this.props.history.map((item, index) => {
-                  return <CSSTransition
-										key={index}
-										classNames='repeat'
-										timeout={{enter: 500, exit: 500}}>
-										<div className={styl['history-row']}>
-											<SkillHistoryItemComponent name={item.name} key={index} date={item.date}
-																								 total-width={this._widthPromise} min-date={getMinDate(this.props.history)}/>
-										</div>
-									</CSSTransition>
-                })
-              }
-						</TransitionGroup>
-					</div>
-				</div>
+				<div>{this.state.shortView ? (
+					<TransitionGroup>
+						<CSSTransition
+							classNames='repeat'
+							timeout={{enter: 500, exit: 500}}>
+							<SkillHistorySimpleComponent/>
+						</CSSTransition>
+					</TransitionGroup>
+					) : (
+						<div>
+							<h3>Base libs & frameworks(detail view)</h3>
+							<div ref={this.setElement}>
+								<input type="text" onChange={this.handleSearch} className={styl.input}
+											 placeholder="search filter"
+											 value={this.props.filterBy}/>
+                {this.props.filterBy ? button : null}
+								<div>
+									<TransitionGroup>
+                    {
+                      this.props.history.map((item, index) => {
+                        return <CSSTransition
+													key={index}
+													classNames='repeat'
+													timeout={{enter: 500, exit: 500}}>
+													<div className={styl['history-row']}>
+														<SkillHistoryItemComponent name={item.name} key={index} date={item.date}
+																											 total-width={this._widthPromise} min-date={getMinDate(this.props.history)}/>
+													</div>
+												</CSSTransition>
+                      })
+                    }
+									</TransitionGroup>
+								</div>
+							</div>
+						</div>
+					) }</div>
 			</div>
     )
   }

@@ -69,7 +69,6 @@ export default class HashRouterComponent extends React.Component{
 
   componentDidMount(e){
 
-    console.log('->>>',)
     const height = windowSize().height - posXY(this.scrollEl).y
     this.scrollEl.style.height = height+'px'
 
