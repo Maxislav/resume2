@@ -1,0 +1,88 @@
+[
+
+  {
+    "name": "Angular",
+    "date": [
+
+      [
+        "10.04.2015",
+        null
+      ]
+    ]
+  },
+  {
+    "name": "Angular2+",
+    "date": [
+      [
+        "2016",
+        null
+      ]
+    ]
+  },
+  {
+    "name" : "VueJs",
+    "date" : [
+      [
+        "01.15.2017",
+        null
+      ]
+    ]
+  },
+  {
+    "name": "React",
+    "date": [
+      [
+        "10.23.2017",
+        null
+      ]
+    ]
+  },
+  {
+    "name": "Sencha Touch2, ExtJS",
+    "date": [
+      [
+        "01.04.2013",
+        "01.10.2013"
+      ]
+    ]
+  },
+  {
+    "name": "jQuery (jQuery-ui etc.) ",
+    "date": [
+      [
+        "01.01.2012",
+        null
+
+      ]
+    ]
+  },
+  {
+    "name": "RequireJS ",
+    "date": [
+      [
+        "01.12.2013",
+        null
+      ]
+    ]
+  },
+
+  {
+    "name": "Phonegap (for Android)",
+    "date": [
+      [
+        "01.01.2015",
+        "01.01.2016"
+      ]
+    ]
+  },
+
+  {
+    "name": "Android (native)",
+    "date": [
+      [
+        "01.03.2015",
+        null
+      ]
+    ]
+  }
+]
