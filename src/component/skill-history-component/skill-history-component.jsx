@@ -39,6 +39,7 @@ const getMinDate = (list) =>{
   	filterBy:store.skillReducer.filterBy,
     history: store.skillReducer.history,
 		filterHistory: store.filterReducer.history,
+    data: store.hoverReducer.data
   }
 })
 export default class SkillHistoryComponent extends React.Component {
@@ -126,6 +127,7 @@ export default class SkillHistoryComponent extends React.Component {
 						<div>
 							<h3>Base libs & frameworks(detail view)</h3>
 							<div ref={this.setElement}>
+                <div>X:{this.props.data.xy.x} Y:{this.props.data.xy.y}</div>
 								<input type="text" onChange={this.handleSearch} className={styl.input}
 											 placeholder="search filter"
 											 value={this.props.filterBy}/>

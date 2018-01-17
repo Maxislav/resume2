@@ -1,10 +1,16 @@
 import React from 'react';
 import SkillHistoryItemStyl from './skill-history-item-component.styl';
 import { autobind } from 'core-decorators';
+import hoverReducer from "../../../reduscers/hover-reducer";
+import connect from "react-redux/es/connect/connect";
 
 
 
-
+@connect((store)=>{
+	return {
+    data: store.hoverReducer.data
+	}
+})
 export default class SkillHistoryItemComponent extends React.Component {
 
 	/**
@@ -39,15 +45,21 @@ export default class SkillHistoryItemComponent extends React.Component {
 
 	}
 
-	handleHover(e){
-			//console.log(e)
+	@autobind
+	handleHover( e, item){
+    this.props.dispatch({
+			type: 'HANDLE_HOVER',
+      data: {e}
+		})
 	}
 
 
 
 	render() {
 		return (
+
 			<div>
+				{/*<div>{this.props.data.xy.x}oo</div>*/}
 				<div>
 					<b>{this.props.name}</b>
 				</div>
@@ -55,7 +67,7 @@ export default class SkillHistoryItemComponent extends React.Component {
 					{
 						this.props.date.map((item, index) => {
 							return (
-								<li key={index}  ref={el=>this.getPositionLeft(el, item)} className={SkillHistoryItemStyl.it} onMouseEnter={this.handleHover} >
+								<li key={index}  ref={el=>this.getPositionLeft(el, item)} className={SkillHistoryItemStyl.it} onMouseMove={e=>this.handleHover(e, item)} >
 									<div className="relative">
 										{
 											item.map((date, i) => {
