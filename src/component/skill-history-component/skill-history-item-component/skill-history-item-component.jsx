@@ -46,12 +46,30 @@ export default class SkillHistoryItemComponent extends React.Component {
 	}
 
 	@autobind
-	handleHover( e, item){
+  onMouseMove( e, item){
     this.props.dispatch({
-			type: 'HANDLE_HOVER',
+			type: 'HANDLE_MOVE',
       data: {e}
 		})
 	}
+
+  @autobind
+	onMouseEnter(e, item) {
+    this.props.dispatch({
+			type: 'ON_MOUSE_ENTER',
+			data: {show: true}
+		})
+	}
+
+	@autobind
+  onMouseLeave( e, item){
+    this.props.dispatch({
+      type: 'ON_MOUSE_ALIVE',
+			data: {show: false}
+    })
+	}
+
+
 
 
 
@@ -67,7 +85,12 @@ export default class SkillHistoryItemComponent extends React.Component {
 					{
 						this.props.date.map((item, index) => {
 							return (
-								<li key={index}  ref={el=>this.getPositionLeft(el, item)} className={SkillHistoryItemStyl.it} onMouseMove={e=>this.handleHover(e, item)} >
+								<li key={index}  ref={el=>this.getPositionLeft(el, item)}
+										className={SkillHistoryItemStyl.it}
+										onMouseMove={e=>this.onMouseMove(e, item)}
+                    onMouseEnter={e=>this.onMouseEnter(e, item)}
+                    onMouseLeave={e=>this.onMouseLeave(e, item)}
+								>
 									<div className="relative">
 										{
 											item.map((date, i) => {

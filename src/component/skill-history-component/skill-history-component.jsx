@@ -8,7 +8,7 @@ import {connect} from 'react-redux'
 import axios from 'axios'
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import ContactInfoComponent from '../../component/contact-component/contact-info-component/contact-info-component'
-
+import SkillHistoryTileComponent from './skill-history-tile-component/skill-history-tile-component'
 
 /**
  * @param {Array.<SkillItem>}list
@@ -72,6 +72,10 @@ export default class SkillHistoryComponent extends React.Component {
 	@autobind
 	setElement(el){
 		this._el = el;
+		this.props.dispatch({
+			type:'PARENT_EL',
+			data: {parentEl: el}
+		})
   }
 
   @autobind
@@ -82,19 +86,12 @@ export default class SkillHistoryComponent extends React.Component {
     })
 	}
 
-
-
-
   @autobind
 	onSimpleDetailView(){
   	this.setState({
       shortView: !this.state.shortView
 		})
 	}
-
-
-
-
 
 	componentDidMount(e){
     this.props.dispatch({
@@ -126,8 +123,9 @@ export default class SkillHistoryComponent extends React.Component {
 					) : (
 						<div>
 							<h3>Base libs & frameworks(detail view)</h3>
-							<div ref={this.setElement}>
-                <div>X:{this.props.data.xy.x} Y:{this.props.data.xy.y}</div>
+							<div className={styl.relative} ref={this.setElement}>
+								{/*{this.props.data.show ?<SkillHistoryTileComponent/>: null}*/}
+								<SkillHistoryTileComponent/>
 								<input type="text" onChange={this.handleSearch} className={styl.input}
 											 placeholder="search filter"
 											 value={this.props.filterBy}/>
