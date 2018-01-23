@@ -1,10 +1,13 @@
 
-const webpack = require("webpack");
+const NODE_ENV = process.env.NODE_ENV || "production";
+const Webpack = require("webpack");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const NODE_ENV = process.env.NODE_ENV || "production";
+
+
 
 module.exports = {
 	entry: "./src/init.jsx",
@@ -23,7 +26,7 @@ module.exports = {
 	},
 	plugins: [
 
-		new webpack.DefinePlugin({
+		new Webpack.DefinePlugin({
 			NODE_ENV: JSON.stringify(NODE_ENV)
 		}),
 		new HtmlWebpackPlugin({
@@ -94,3 +97,19 @@ module.exports = {
 		]
 	}
 };
+
+
+if(NODE_ENV=='production'){
+  //module.exports.plugins.unshift(new Version({}))
+  module.exports.plugins.push(
+    new UglifyJsPlugin()
+    /*new Webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+        drop_console: false,
+        unsafe: true
+
+      }
+    })*/
+  )
+}

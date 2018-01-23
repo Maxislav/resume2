@@ -32,6 +32,7 @@
     "redux-logger": "^3.0.6",
     "redux-promise-middleware": "^4.4.1",
     "redux-thunk": "^2.2.0",
+    "uglifyjs-webpack-plugin": "^1.1.6",
     "webpack-preset-babel-stage-1": "^0.2.0"
   },
   "devDependencies": {
@@ -46,7 +47,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "webpack-dev-server": "NODE_ENV=dev webpack-dev-server --inline"
+    "dev": "NODE_ENV=dev webpack-dev-server --inline",
+    "prod": "webpack"
   },
   "author": "Maxislav",
   "license": "ISC"
