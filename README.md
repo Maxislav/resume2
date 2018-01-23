@@ -1,4 +1,5 @@
 ## Resume (React, Redux, Webpack2)
+## [https://maxislav.github.io/resume2/dist](https://maxislav.github.io/resume2/dist/#/itskill)
 
 ### Required: any static server;
 ***
