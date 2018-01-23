@@ -108,13 +108,5 @@ if(NODE_ENV=='production'){
   //module.exports.plugins.unshift(new Version({}))
   module.exports.plugins.push(
     new UglifyJsPlugin()
-    /*new Webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false,
-        drop_console: false,
-        unsafe: true
-
-      }
-    })*/
   )
 }
