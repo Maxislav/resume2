@@ -10,36 +10,14 @@ import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import ContactInfoComponent from '../../component/contact-component/contact-info-component/contact-info-component'
 import SkillHistoryTileComponent from './skill-history-tile-component/skill-history-tile-component'
 import Transition from 'react-transition-group/Transition';
-
-/**
- * @param {Array.<SkillItem>}list
- * @return {Date}
- */
-const getMinDate = (list) =>{
-	let minDate = Infinity;
-	list.forEach(skillItem=>{
-		skillItem.date.forEach(d=>{
-			d.forEach(d=>{
-				if(d!==null){
-					const dateLong = new Date(d).getTime()
-					if(dateLong<minDate){
-						minDate = dateLong
-					}
-				}
-			})
-		})
-	});
-	return new Date(minDate)
-}
-
-
-
+import SkillHistoryRulerComponent from './skill-history-ruler-component/skill-history-ruler-component'
+import {getMinDate} from './asset'
 
 @connect((store) => {
   return {
   	filterBy:store.skillReducer.filterBy,
     history: store.skillReducer.history,
-		filterHistory: store.filterReducer.history,
+	filterHistory: store.filterReducer.history,
     data: store.hoverReducer.data
   }
 })
@@ -127,6 +105,7 @@ export default class SkillHistoryComponent extends React.Component {
 							<div className={styl.relative} ref={this.setElement}>
 								{/*{this.props.data.show ?<SkillHistoryTileComponent/>: null}*/}
 								<SkillHistoryTileComponent/>
+								<SkillHistoryRulerComponent/>	
 								<input type="text" onChange={this.handleSearch} className={styl.input}
 											 placeholder="search filter"
 											 value={this.props.filterBy}/>
