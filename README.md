@@ -5,6 +5,9 @@
 ## Develop
 
 ### Install
+define you skill  ./src/asset/skill-history.json
+
+
 ```
 ~$ mpm i -g webpack
 ~$ mpm i -g webpack-dev-server
