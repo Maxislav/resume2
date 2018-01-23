@@ -139,7 +139,7 @@ export default class SkillHistoryComponent extends React.Component {
 													classNames='repeat'
 													timeout={{enter: 500, exit: 500}}>
 													<div className={styl['history-row']}>
-														<SkillHistoryItemComponent name={item.name} key={index} date={item.date}
+														<SkillHistoryItemComponent name={item.name} key={item.name} date={item.date}
 																											 total-width={this._widthPromise} min-date={getMinDate(this.props.history)}/>
 													</div>
 												</CSSTransition>
