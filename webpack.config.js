@@ -7,7 +7,7 @@ const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 
-
+console.log(NODE_ENV)
 
 module.exports = {
 	entry: "./src/init.jsx",
@@ -27,7 +27,9 @@ module.exports = {
 	plugins: [
 
 		new Webpack.DefinePlugin({
-			NODE_ENV: JSON.stringify(NODE_ENV)
+			NODE_ENV: JSON.stringify(NODE_ENV),
+      'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
+
 		}),
 		new HtmlWebpackPlugin({
 			template: path.resolve(__dirname, './index.pug')
@@ -51,7 +53,8 @@ module.exports = {
 
   ],
 	resolve: {
-		extensions: ['.js', '.jsx']
+		extensions: ['.js', '.jsx'],
+
 	},
 	module: {
 		rules: [
