@@ -46,8 +46,10 @@ module.exports = {
 				to:'./libs'
 			}
 
-		])
-	],
+		]),
+    new Webpack.EnvironmentPlugin(['NODE_ENV'])
+
+  ],
 	resolve: {
 		extensions: ['.js', '.jsx']
 	},
