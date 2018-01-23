@@ -5,7 +5,7 @@ import ExperienceComponent from  '../experience-component/experience-component';
 import GlComponent from '../gl-component/gl-component'
 import Gl2Component from '../gl-2-component/gl-2-component'
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
+import OwnProjectComponent from '../own-project-component/own-project-component'
 
 import {
   BrowserRouter as Router,
@@ -45,6 +45,10 @@ class DefaultComponent extends React.Component{
         break;
       case  'rain':
         this.childComponent = Gl2Component;
+
+        break;
+      case 'ownproject' :
+        this.childComponent = OwnProjectComponent
         break;
       default:
         return(<Redirect to='/itskill'/>)
@@ -81,6 +85,7 @@ export default class HashRouterComponent extends React.Component{
           <ul className={styl['nav-bar']}>
             <li><NavLink to="/itskill" activeStyle={{ background:'#fff' }}>IT skill</NavLink></li>
             <li><NavLink to="/experience" activeStyle={{ background:'#fff' }}>Experience</NavLink></li>
+            <li><NavLink to="/ownproject" activeStyle={{ background:'#fff' }}>Own projects</NavLink></li>
             <li><NavLink to="/contact" activeStyle={{ background:'#fff' }}>Contact</NavLink></li>
             {/*<li><NavLink to="/gl" activeStyle={{ background:'#bfe1ff' }}>GL</NavLink></li>*/}
             {/*<li><NavLink to="/rain" activeStyle={{ background:'#bfe1ff' }}>Rain</NavLink></li>*/}
