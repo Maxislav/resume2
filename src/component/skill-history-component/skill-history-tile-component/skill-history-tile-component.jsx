@@ -72,7 +72,6 @@ export default class SkillHistoryTileComponent extends React.Component {
     const display = this.props.data.show ? 'block' : 'none';
 
     const { item } = this.props.data
-    console.log(item)
 
     let period = 0;
     if(item){

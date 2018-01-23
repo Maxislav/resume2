@@ -9,6 +9,7 @@ import axios from 'axios'
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import ContactInfoComponent from '../../component/contact-component/contact-info-component/contact-info-component'
 import SkillHistoryTileComponent from './skill-history-tile-component/skill-history-tile-component'
+import Transition from 'react-transition-group/Transition';
 
 /**
  * @param {Array.<SkillItem>}list
@@ -135,9 +136,9 @@ export default class SkillHistoryComponent extends React.Component {
                     {
                       this.props.history.map((item, index) => {
                         return <CSSTransition
-													key={index}
+													key={item.name}
 													classNames='repeat'
-													timeout={{enter: 500, exit: 500}}>
+													timeout={{enter: 50, exit: 50}}>
 													<div className={styl['history-row']}>
 														<SkillHistoryItemComponent name={item.name} key={item.name} date={item.date}
 																											 total-width={this._widthPromise} min-date={getMinDate(this.props.history)}/>
