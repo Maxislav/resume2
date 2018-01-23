@@ -5,7 +5,7 @@
 ## Develop
 
 ### Install
-define you skill  ./src/asset/skill-history.json
+define you skill <b>./src/asset/skill-history.json</b>
 
 
 ```
