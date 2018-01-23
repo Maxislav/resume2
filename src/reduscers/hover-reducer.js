@@ -5,28 +5,24 @@ const data = {
     x: null,
     y: null
   },
-  show: false
+  show: false,
+  item: null
 };
 
-const hoverReducer = (state ={data}, action) => {
+const hoverReducer = (state = {data}, action) => {
 
   switch (action.type) {
     case 'PARENT_EL':
-      data.parentEl = action.data.parentEl
-      return {...state, data}
+      return {...state, data: {...data, parentEl: action.data.parentEl }}
     case 'ON_MOUSE_ENTER':
+      return {...state, data: {...state.data, show: action.data.show, item:action.data.item} }
     case 'ON_MOUSE_ALIVE':
-      data.show = action.data.show
-      return {...state, data: {...data, show: action.data.show } }
+      return {...state, data: {...state.data, show: action.data.show} }
     case 'HANDLE_MOVE': {
-      console.log(action.data.e.target)
-
-      data.xy = {
+      const xy = {
         x: action.data.e.pageX, y: action.data.e.pageY
-      }
-
-
-      return {...state,  data:  {...data, action }}
+      };
+      return {...state,  data:  {...state.data, xy  }}
     }
   }
   return {...state}

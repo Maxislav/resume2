@@ -57,7 +57,7 @@ export default class SkillHistoryItemComponent extends React.Component {
 	onMouseEnter(e, item) {
     this.props.dispatch({
 			type: 'ON_MOUSE_ENTER',
-			data: {show: true}
+			data: {show: true, item}
 		})
 	}
 
