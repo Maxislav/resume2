@@ -105,12 +105,13 @@ export default class SkillHistoryComponent extends React.Component {
 							<div className={styl.relative} ref={this.setElement}>
 								{/*{this.props.data.show ?<SkillHistoryTileComponent/>: null}*/}
 								<SkillHistoryTileComponent/>
-								<SkillHistoryRulerComponent/>	
+
 								<input type="text" onChange={this.handleSearch} className={styl.input}
 											 placeholder="search filter"
 											 value={this.props.filterBy}/>
                 {this.props.filterBy ? button : null}
 								<div>
+                  <SkillHistoryRulerComponent/>
 									<TransitionGroup>
                     {
                       this.props.history.map((item, index) => {
