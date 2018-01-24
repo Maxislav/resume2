@@ -31,7 +31,7 @@ export default class ContactComponent extends Component{
     this.load
       .then(([L])=>{
         var mymap = L.map(this.mapEl).setView([50.4, 30.48], 11);
-        L.tileLayer('http://mt0.googleapis.com/vt/lyrs=m@207000000&hl=ru&src=api&x={x}&y={y}&z={z}&s=Galile', {
+        L.tileLayer(`${NODE_ENV=='dev' ? 'http' : 'https'}://mt0.googleapis.com/vt/lyrs=m@207000000&hl=ru&src=api&x={x}&y={y}&z={z}&s=Galile`, {
           maxZoom: 18,
           id: 'examples.map-i875mjb7'
         }).addTo(mymap);
