@@ -1,4 +1,5 @@
 import initState from '../init-state-const';
+
 const filterReducer = (state = initState, action) => {
   switch (action.type){
 

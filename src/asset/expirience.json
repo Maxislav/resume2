@@ -1,0 +1,16 @@
+[
+	{
+		"position": "JavaScript developer",
+		"subject" : "Programming for Mobile Applications in the company Intellect Service.",
+		"responsibility": "Creating a mobile application. HTML coding, сreate a data structure. The main Frameworks: Sencha touch, Sencha ExtJS.",
+		"purpose": [
+			"Electronic document in your phone.",
+			"Transactions with money",
+			"Payment etc."
+		],
+		"date": [
+			"01.04.2013",
+			"01.10.2013"
+		]
+	}
+]
