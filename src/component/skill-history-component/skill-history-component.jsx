@@ -13,6 +13,30 @@ import Transition from 'react-transition-group/Transition';
 import SkillHistoryRulerComponent from './skill-history-ruler-component/skill-history-ruler-component'
 import {getMinDate} from './asset'
 
+
+const transitionDuration = 100;
+const defaultStyle = {
+  transition: `opacity ${transitionDuration}ms ease-in-out`,
+}
+
+
+const transitionStyles = {
+  entering: { opacity: 0 },
+  entered: { opacity: 1 },
+  exiting: { opacity: 1 },
+  exited:{ opacity: 0 }
+};
+
+const ButtonReset = ({in: inProp, onReset: onReset }) => (
+  <Transition in={inProp} timeout={transitionDuration}>
+    {(state) => (
+      <button onClick={onReset} style={{...defaultStyle,...transitionStyles[state]}}>
+				reset
+      </button>
+    )}
+  </Transition>
+)
+
 @connect((store) => {
   return {
   	filterBy:store.skillReducer.filterBy,
@@ -72,6 +96,8 @@ export default class SkillHistoryComponent extends React.Component {
 		})
 	}
 
+
+
 	componentDidMount(e){
     this.props.dispatch({
       type:'FETCH_HISTORY',
@@ -81,7 +107,6 @@ export default class SkillHistoryComponent extends React.Component {
 	}
 
   render() {
-    const button = <button onClick={this.onReset}>reset</button>;
     return (
 			<div className={styl.content}>
 				<div>
@@ -91,14 +116,10 @@ export default class SkillHistoryComponent extends React.Component {
 
 				<h2>&nbsp;</h2>
 
+        <Transition in={this.state.shortView} timeout={3000}>
+
 				<div>{this.state.shortView ? (
-					<TransitionGroup>
-						<CSSTransition
-							classNames='repeat'
-							timeout={{enter: 500, exit: 500}}>
 							<SkillHistorySimpleComponent/>
-						</CSSTransition>
-					</TransitionGroup>
 					) : (
 						<div>
 							<h3>Base libs & frameworks(detail view)</h3>
@@ -109,7 +130,8 @@ export default class SkillHistoryComponent extends React.Component {
 								<input type="text" onChange={this.handleSearch} className={styl.input}
 											 placeholder="search filter"
 											 value={this.props.filterBy}/>
-                {this.props.filterBy ? button : null}
+                <ButtonReset in={!!this.props.filterBy} onReset={this.onReset}/>
+
 								<div>
                   <SkillHistoryRulerComponent/>
 									<TransitionGroup>
@@ -131,6 +153,7 @@ export default class SkillHistoryComponent extends React.Component {
 							</div>
 						</div>
 					) }</div>
+				</Transition>
 			</div>
     )
   }
