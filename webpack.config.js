@@ -45,6 +45,10 @@ module.exports = {
 				to:'./asset'
 			},
 			{
+				from: './src/asset/expirience.json',
+				to:'./asset'
+			},
+			{
 				from: './src/libs',
 				to:'./libs'
 			}
