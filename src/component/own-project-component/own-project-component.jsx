@@ -5,7 +5,7 @@ export default class OwnProjectComponent extends Component{
 	render(){
 		return(
 			<div className={styl['own-component-styl']}>
-				Own projects
+				In develop...
 			</div>	
 			)
 	}

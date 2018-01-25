@@ -16,7 +16,8 @@
 			"MapboxGl",
 			"PixiJS",
 			"WebGl native"
-		]
+		],
+		"img": "./img/asset/infozahyst.jpg"
 	},
 	{
 		"position": "JavaScript developer",
@@ -33,7 +34,8 @@
 		],
 		"libs": [
 			"Angular"
-		]
+		],
+		"img": "./img/asset/loyverse.png"
 	},
 	{
 		"position": "JavaScript developer",
@@ -50,7 +52,8 @@
 		"libs": [
 			"JQuery",
 			"RequireJs"
-		]
+		],
+		"img": "./img/asset/reteco.png"
 	},
 	{
 		"position": "JavaScript developer",

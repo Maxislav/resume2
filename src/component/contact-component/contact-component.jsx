@@ -27,7 +27,6 @@ export default class ContactComponent extends Component{
 
   }
   componentDidMount(){
-    console.log('mount')
     this.load
       .then(([L])=>{
         var mymap = L.map(this.mapEl).setView([50.4, 30.48], 11);

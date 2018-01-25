@@ -14,11 +14,21 @@ const getDataStr = (date) =>{
   return 'Present time'
 }
 
+const ImgContainer = ({img}) =>{
+  if(img){
+    return (
+        <img src={img}/>
+    )
+  }else return null
+}
 
 export default class ExperienceItemComponent extends Component{
   render(){
     return(
       <div className={styl.container}>
+        <div className={styl.img}>
+          <ImgContainer img={this.props.data.img}/>
+        </div>
         <div className={styl['row']}>
           <div>
             Period:
