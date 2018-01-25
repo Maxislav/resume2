@@ -16,6 +16,13 @@ export default class ExperienceItemComponent extends Component{
             ))}
           </div>
         </div>
+        <div className={styl.row}>
+          <div>Company:</div>
+          <div>
+            {this.props.data.company}
+          </div>
+
+        </div>
         <div className={styl['row']}>
           <div>
             Position:
@@ -24,6 +31,16 @@ export default class ExperienceItemComponent extends Component{
             {this.props.data.position}
           </div>
 
+        </div>
+        <div className={styl.row}>
+          <div>
+            Main Frameworks:
+          </div>
+          <div>
+            <ul className={styl.list}>
+              {this.props.data.libs.map( (item, index)=>(<li key={index}>{item}</li>) )}
+            </ul>
+          </div>
         </div>
         <div className={styl['row']}>
           <div>
@@ -35,10 +52,10 @@ export default class ExperienceItemComponent extends Component{
         </div>
         <div className={styl.row}>
           <div>
-            Purpose
+            Purpose:
           </div>
           <div>
-            <ul>
+            <ul className={styl.list}>
               {this.props.data.purpose.map( (item, index)=>(<li key={index}>{item}</li>) )}
             </ul>
           </div>

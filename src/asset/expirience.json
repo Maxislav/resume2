@@ -1,8 +1,9 @@
 [
 	{
 		"position": "JavaScript developer",
+		"company": "Intellect Service",
 		"subject" : "Programming for Mobile Applications in the company Intellect Service.",
-		"responsibility": "Creating a mobile application. HTML coding, сreate a data structure. The main Frameworks: Sencha touch, Sencha ExtJS.",
+		"responsibility": "Creating a mobile application. HTML coding, сreate a data structure. ",
 		"purpose": [
 			"Electronic document in your phone.",
 			"Transactions with money",
@@ -11,6 +12,9 @@
 		"date": [
 			"04.01.2013",
 			"10.01.2013"
+		],
+		"libs": [
+			"Sencha touch"
 		]
 	}
 ]
