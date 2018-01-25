@@ -1,8 +1,62 @@
 [
 	{
 		"position": "JavaScript developer",
+		"company": "infozahyst",
+		"subject" : "Private information",
+		"responsibility": "Private information",
+		"purpose": [
+			"Weapon system Ukraine"
+		],
+		"date": [
+			"6.01.2016",
+			null
+		],
+		"libs": [
+			"Angular",
+			"MapboxGl",
+			"PixiJS",
+			"WebGl native"
+		]
+	},
+	{
+		"position": "JavaScript developer",
+		"company": "Unisystem",
+		"subject" : "Create web interfaces. Main project \"Ретеко кассир\"",
+		"responsibility": "Creating a mobile application. HTML coding, сreate a data structure. ",
+		"purpose": [
+			"POS-system",
+			"Manage your store and sales from a smartphone or tablet — increase your small business profit by making your sales easy and fast with Loyverse POS, manage inventory, visualize sales analytics, acquire, retain, engage your customers and multiply their average spend"
+		],
+		"date": [
+			"1.01.2015",
+			"6.01.2016"
+		],
+		"libs": [
+			"Angular"
+		]
+	},
+	{
+		"position": "JavaScript developer",
+		"company": "Unisystem",
+		"subject" : "Create web interfaces. Main project \"Ретеко кассир\"",
+		"responsibility": "Create web interface (design logic etc.). HTML coding, create a data structure. ",
+		"purpose": [
+			"Cash register operation"
+		],
+		"date": [
+			"10.01.2013",
+			"1.01.2015"
+		],
+		"libs": [
+			"JQuery",
+			"RequireJs"
+		]
+	},
+	{
+		"position": "JavaScript developer",
+		"company": "Intellect Service",
 		"subject" : "Programming for Mobile Applications in the company Intellect Service.",
-		"responsibility": "Creating a mobile application. HTML coding, сreate a data structure. The main Frameworks: Sencha touch, Sencha ExtJS.",
+		"responsibility": "Creating a mobile application. HTML coding, create a data structure. ",
 		"purpose": [
 			"Electronic document in your phone.",
 			"Transactions with money",
@@ -11,6 +65,9 @@
 		"date": [
 			"04.01.2013",
 			"10.01.2013"
+		],
+		"libs": [
+			"Sencha touch"
 		]
 	}
 ]

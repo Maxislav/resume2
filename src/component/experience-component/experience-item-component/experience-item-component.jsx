@@ -2,6 +2,19 @@ import React, {Component} from 'react'
 import dateFormat from 'dateformat'
 import styl from './experience-item-component.styl'
 
+
+/**
+ *
+ * @param {Date|null}date
+ */
+const getDataStr = (date) =>{
+  if(date){
+    return dateFormat(date,'mmmm dS, yyyy' )
+  }
+  return 'Present time'
+}
+
+
 export default class ExperienceItemComponent extends Component{
   render(){
     return(
@@ -12,7 +25,7 @@ export default class ExperienceItemComponent extends Component{
           </div>
           <div className={styl['date-container']}>
             {this.props.data.date.map((item, index) => (
-              <div key={index}>{dateFormat(item,'mmmm dS, yyyy' )} {index==0 ?'-': null}</div>
+              <div key={index}>{getDataStr(item)} {index==0 ?'-': null}</div>
             ))}
           </div>
         </div>
