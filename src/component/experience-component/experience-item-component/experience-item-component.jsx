@@ -45,16 +45,15 @@ export default class ExperienceItemComponent extends Component{
           </div>
 
         </div>
-        <div className={styl.row}>
+        <div className={styl['row']}>
           <div>
-            Main Frameworks:
+            Subject:
           </div>
           <div>
-            <ul className={styl.list}>
-              {this.props.data.libs.map( (item, index)=>(<li key={index}>{item}</li>) )}
-            </ul>
+            {this.props.data.subject}
           </div>
         </div>
+
         <div className={styl['row']}>
           <div>
             Responsibility:
@@ -70,6 +69,16 @@ export default class ExperienceItemComponent extends Component{
           <div>
             <ul className={styl.list}>
               {this.props.data.purpose.map( (item, index)=>(<li key={index}>{item}</li>) )}
+            </ul>
+          </div>
+        </div>
+        <div className={styl.row}>
+          <div>
+            Main Frameworks:
+          </div>
+          <div>
+            <ul className={styl.list}>
+              {this.props.data.libs.map( (item, index)=>(<li key={index}>{item}</li>) )}
             </ul>
           </div>
         </div>

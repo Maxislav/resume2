@@ -1,7 +1,7 @@
 [
 	{
 		"position": "JavaScript developer",
-		"company": "infozahyst",
+		"company": "Infozahyst",
 		"subject" : "Private information",
 		"responsibility": "Private information",
 		"purpose": [
@@ -21,7 +21,7 @@
 	{
 		"position": "JavaScript developer",
 		"company": "Unisystem",
-		"subject" : "Create web interfaces. Main project \"Ретеко кассир\"",
+		"subject" : "Create web interfaces. Main project \"TriniPOS\"",
 		"responsibility": "Creating a mobile application. HTML coding, сreate a data structure. ",
 		"purpose": [
 			"POS-system",
@@ -55,7 +55,7 @@
 	{
 		"position": "JavaScript developer",
 		"company": "Intellect Service",
-		"subject" : "Programming for Mobile Applications in the company Intellect Service.",
+		"subject" : "Mobile Applications throw JS :)",
 		"responsibility": "Creating a mobile application. HTML coding, create a data structure. ",
 		"purpose": [
 			"Electronic document in your phone.",
