@@ -41,13 +41,13 @@ module.exports = {
 				to:'./img'
 			},
 			{
-				from: './src/asset/skill-history.json',
-				to:'./asset'
+				from: './src/asset' ,
+				to:'./asset',
+				ignore: [
+					'*.js'
+				]
 			},
-			{
-				from: './src/asset/expirience.json',
-				to:'./asset'
-			},
+
 			{
 				from: './src/libs',
 				to:'./libs'

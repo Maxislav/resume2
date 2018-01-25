@@ -2,6 +2,7 @@ import React from "react"
 import styl from './experience-component.styl'
 import {connect} from 'react-redux'
 import axios from 'axios'
+import ExperienceItemComponent from './experience-item-component/experience-item-component'
 
 @connect((store) => {
   return {
@@ -17,13 +18,11 @@ export default class ExperienceComponent extends React.Component{
 	    });
 		
 	}
-
   render(){
-  	console.log(this.props.list)
     return (
       <div className={styl['experience-component']}>
        	{this.props.list.map((item, index)=>{
-       		return(<div key={index}>{item.position}</div>)
+       		return(<ExperienceItemComponent data={item} key={index}/>)
        	})}
       </div>
     )

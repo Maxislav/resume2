@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 let middleware;
 
 
-if(NODE_ENV == 'dev'){
+if(NODE_ENV == 'devjjj'){
   const {createLogger} = require('redux-logger')
   const logger = createLogger();
   middleware =  applyMiddleware(promise(), thunk, logger);
