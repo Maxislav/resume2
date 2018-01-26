@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import dateFormat from 'dateformat'
 import styl from './experience-item-component.styl'
+import {NormalDate} from "../../../asset/normal-date";
 
 
 /**
@@ -9,7 +10,12 @@ import styl from './experience-item-component.styl'
  */
 const getDataStr = (date) =>{
   if(date){
-    return dateFormat(date,'mmmm dS, yyyy' )
+    try {
+      return dateFormat(new NormalDate(date),'mmmm dS, yyyy' )
+    }catch(err) {
+      return 'err '+ date
+    }
+
   }
   return 'Present time'
 }

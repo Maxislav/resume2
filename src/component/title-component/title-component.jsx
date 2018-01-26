@@ -8,7 +8,9 @@ export default class TitleComponent extends Component{
     constructor(...args){
       super(...args)
       this.state = {
-        version: {}
+        version: {
+          date: null
+        }
       }
       xhrGet('./cv-version.json')
         .then(d => {

@@ -3,6 +3,7 @@ import SkillHistoryItemStyl from './skill-history-item-component.styl';
 import { autobind } from 'core-decorators';
 import hoverReducer from "../../../reduscers/hover-reducer";
 import connect from "react-redux/es/connect/connect";
+import {NormalDate} from "../../../asset/normal-date";
 
 
 
@@ -34,10 +35,10 @@ export default class SkillHistoryItemComponent extends React.Component {
 			const start = this.props['min-date'].getTime();
 			const finish = Date.now();
 			const period = finish - start;
-			const offset = date[0] ? new Date(date[0]).getTime() - start : new Date();
+			const offset = date[0] ? new NormalDate(date[0]).getTime() - start : new Date();
 			const scaleX = period/totalWidth;
-			const date1 = new Date(date[0]);
-			const date2 = date[1] ? new Date(date[1]) : new Date();
+			const date1 = new NormalDate(date[0]);
+			const date2 = date[1] ? new NormalDate(date[1]) : new Date();
 			const length = date2.getTime() - date1.getTime();
       if(el)	el.style.left = offset/scaleX +'px';
 			if(el) el.style.width = length/scaleX +'px';
@@ -94,7 +95,7 @@ export default class SkillHistoryItemComponent extends React.Component {
 									<div className="relative">
 										{
 											item.map((date, i) => {
-												const d = date ? new Date(date).toLocaleDateString() : new Date().toLocaleDateString();
+												const d = date ? new NormalDate(date).toLocaleDateString() : new Date().toLocaleDateString();
 												return (
 													<div key={i} className="margin-0-8">
 														{d}
