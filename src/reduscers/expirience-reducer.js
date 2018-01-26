@@ -6,13 +6,13 @@ const initState = {
 
 const expirienceReducer = (state=initState, action) => {
 	switch (action.type){
-	    case 'FETCH_EXPIRIENCE_PENDING': {
+	    case 'FETCH_EXPERIENCE_PENDING': {
 	      return {...state, fetching: false};
 	    }
-	    case 'FETCH_EXPIRIENCE_REJECTED': {
+	    case 'FETCH_EXPERIENCE_REJECTED': {
 	      return {...state, fetching: false, error: action.payload};
 	    }
-	    case 'FETCH_EXPIRIENCE_FULFILLED': {
+	    case 'FETCH_EXPERIENCE_FULFILLED': {
 	      return {...state, fetching: true, list: action.payload.data };
 	    }
 	    

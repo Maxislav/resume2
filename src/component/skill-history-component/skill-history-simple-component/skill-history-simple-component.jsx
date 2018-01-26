@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios'
 import styl from './skill-history-simple-component.styl'
+import {NormalDate} from "../../../asset/normal-date";
 
 @connect((store) => {
   return {
@@ -28,7 +29,7 @@ export default class SkillHistorySimpleComponent extends React.Component{
                 {item.name}
               </td>
               <td>
-                {new Date(Math.min(...item.date.map(d=>new Date(d[0]).getTime() ))).toLocaleDateString()}
+                {new Date(Math.min(...item.date.map(d=>new NormalDate(d[0]).getTime() ))).toLocaleDateString()}
               </td>
             </tr>
           })

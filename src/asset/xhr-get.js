@@ -32,13 +32,31 @@ function loadPromise(url) {
   });
 }
 
-export const xhrGet = (url) => {
+/**
+ *
+ * @param {String} url
+ * @param {string | undefined} type
+ * @return {*|PromiseLike<T>|Promise<T>}
+ */
+export const xhrGet = (url, type) => {
   return loadPromise(url)
     .then(arrayBuf => {
       return new Promise((resolve, reject)=>{
         const reader = new FileReader();
         reader.onload = () =>{
-          resolve(reader.result)
+          switch (type){
+            case 'json':
+              try {
+                resolve(JSON.parse(reader.result));
+              }catch(err) {
+                reject(err)
+              }
+
+              break;
+            default:
+              resolve(reader.result);
+          }
+
         }
         reader.readAsText(new Blob([new Uint8Array(arrayBuf)]));
       })

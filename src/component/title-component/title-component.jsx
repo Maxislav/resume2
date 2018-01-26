@@ -12,11 +12,10 @@ export default class TitleComponent extends Component{
           date: null
         }
       }
-      xhrGet('./cv-version.json')
-        .then(d => {
-          const  j = JSON.parse(d)
+      xhrGet('./cv-version.json', 'json')
+        .then(version => {
           this.setState({
-            version: j
+            version
           })
         })
     }
