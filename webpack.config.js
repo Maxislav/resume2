@@ -41,8 +41,8 @@ module.exports = {
 				to:'./img'
 			},
 			{
-				from: './src/asset' ,
-				to:'./asset',
+				from: './src/cv-json-data' ,
+				to:'./cv-json-data',
 				ignore: [
 					'*.js'
 				]

@@ -101,7 +101,7 @@ export default class SkillHistoryComponent extends React.Component {
 	componentDidMount(e){
     this.props.dispatch({
       type:'FETCH_HISTORY',
-      payload: axios.get('asset/skill-history.json')
+      payload: axios.get('cv-json-data/skill-history.json')
     });
 		this._widthPromise.resolve(this._el.offsetWidth)
 	}
