@@ -5,7 +5,7 @@
 ## Develop
 
 ### Install
-define you skill <b>./src/asset/skill-history.json</b>
+define you skill <b>./src/cv-json-data/*.json</b> files
 
 
 ```
