@@ -14,7 +14,7 @@ export default class ExperienceComponent extends React.Component{
 	componentDidMount(e){
 	    this.props.dispatch({
 	      type:'FETCH_EXPERIENCE',
-	      payload: axios.get('cv-json-data/expirience.json')
+	      payload: axios.get('cv-json-data/experience.json')
 	    });
 		
 	}
