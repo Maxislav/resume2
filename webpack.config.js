@@ -47,6 +47,9 @@ module.exports = {
 					'*.js'
 				]
 			},
+			{
+				from:'./cv-version.json'
+			},
 
 			{
 				from: './src/libs',
