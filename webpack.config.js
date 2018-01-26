@@ -6,6 +6,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const Version = require('./plugin/version.js')
+const React = require('react')
 
 
 console.log(NODE_ENV)
@@ -29,7 +30,7 @@ module.exports = {
 
 		new Webpack.DefinePlugin({
 			NODE_ENV: JSON.stringify(NODE_ENV),
-      'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
+      'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
 
 		}),
 		new HtmlWebpackPlugin({

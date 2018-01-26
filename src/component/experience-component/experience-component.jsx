@@ -6,7 +6,7 @@ import ExperienceItemComponent from './experience-item-component/experience-item
 
 @connect((store) => {
   return {
-  	list: store.expirienceReducer.list,
+  	list: store.experienceReducer.list,
 	}
 })
 export default class ExperienceComponent extends React.Component{

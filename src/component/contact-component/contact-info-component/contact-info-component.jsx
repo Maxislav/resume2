@@ -1,20 +1,33 @@
-import React from "react";
+import React, {Component} from "react";
 import styl from  './contact-info-component.styl'
+import {xhrGet} from "../../../asset/xhr-get";
 
-const contactData = [
-  ['Maxim Lipatov'],
-  ['Address', 'Kyiv, Ukraine'],
-  ['Phone number', '+38066-593-0939'],
-  ['E-mail', 'maximmalyshyn@gmail.com']
-];
+const $contact = []
 
 export default class ContactInfoComponent extends React.Component{
+
+  constructor(...args){
+    super(...args)
+    this.state = {contact: $contact};
+
+    if(!$contact.length){
+      xhrGet('./cv-json-data/contact.json', 'json')
+        .then(contact => {
+          contact.map(item=>$contact.push(item))
+          this.setState({
+            contact
+          })
+        })
+    }
+
+  }
+
   render(){
     return (
       <table className={styl['contact-table']}>
         <tbody>
         {
-          contactData.map((contact, index) => {
+          this.state.contact.map((contact, index) => {
             return <tr key={index}>
               {
                 contact.map((item, index2) => {

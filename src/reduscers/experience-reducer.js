@@ -4,7 +4,7 @@ const initState = {
 	  list: []
 }
 
-const expirienceReducer = (state=initState, action) => {
+const experienceReducer = (state=initState, action) => {
 	switch (action.type){
 	    case 'FETCH_EXPERIENCE_PENDING': {
 	      return {...state, fetching: false};
@@ -15,11 +15,8 @@ const expirienceReducer = (state=initState, action) => {
 	    case 'FETCH_EXPERIENCE_FULFILLED': {
 	      return {...state, fetching: true, list: action.payload.data };
 	    }
-	    
 	  }
-	  
-	
 	return state
 }
 
-export default expirienceReducer
+export default experienceReducer
