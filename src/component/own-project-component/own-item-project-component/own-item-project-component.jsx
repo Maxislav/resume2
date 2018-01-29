@@ -14,18 +14,32 @@ export class OwnItemProjectComponent extends Component{
      */
     const {data} = this.props
    // console.log(data)
-    return(
+    return (
       <div>
-        <img className={styl.ico} src={data.ico}/>
-        <h2>
-          {data.name}
+        <div className={styl.bookmark}>
+          <div>
+            <div>
+              <a href={data.play_url} target="_blank">
+                <img src="./img/play_prism_hlock.png"/>
+              </a>
 
-        </h2>
-        <div>
-          {data.description}
+            </div>
+          </div>
         </div>
-        <div className={styl.clear_both}>
-          In progress...
+        <div className={styl.overflow} style={{padding: "2px 8px 8px 8px"}}>
+          <div className={styl.content}>
+            <img className={styl.ico} src={data.ico}/>
+            <h2>
+              {data.name}
+            </h2>
+            <div>
+              {data.description}
+            </div>
+            <div className={styl.clear_both}>
+
+            </div>
+          </div>
+
         </div>
       </div>
     )
