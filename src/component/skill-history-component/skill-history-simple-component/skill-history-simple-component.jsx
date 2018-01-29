@@ -40,6 +40,10 @@ const StarDate = ({dateList}) => {
 })
 export default class SkillHistorySimpleComponent extends React.Component{
 
+  constructor(...args){
+    super(...args)
+  }
+
   componentDidMount(e){
     if(!this.props.history.length)
       this.props.dispatch({
