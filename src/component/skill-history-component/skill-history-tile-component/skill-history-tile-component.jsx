@@ -3,24 +3,9 @@ import {connect} from "react-redux";
 import styl from './skill-history-tile-component.styl';
 import {posXY} from '../../../asset/position'
 import {autobind} from "core-decorators";
+import {NormalDate, toYearMonthDay} from "../../../asset/normal-date";
 
 
-const toYearMonthDay = (ms) => {
-  const y = 365 * 24 * 3600 *1000
-  const m = 30 * 24 * 3600 *1000
-  const d = 24 * 3600 * 1000
-
-  const YY = Math.floor(ms/y);
-  const MM = Math.floor((ms - (YY*y))/m)
-
-  const DD = Math.floor((ms - (YY*y) - (MM*m))/d)
-
-  return {
-    YY,
-    MM,
-    DD
-  }
-}
 
 class Ymonthday extends React.Component{
 
@@ -28,11 +13,12 @@ class Ymonthday extends React.Component{
     super(props)
   }
   render(){
+    const {period} = this.props;
     return(
       <div className={styl.ymonthday}>
-        {toYearMonthDay(this.props.period).YY ? <div> {toYearMonthDay(this.props.period).YY}years </div> : null }
-        {toYearMonthDay(this.props.period).MM ? <div> {toYearMonthDay(this.props.period).MM}months </div> : null }
-        {toYearMonthDay(this.props.period).DD ? <div> {toYearMonthDay(this.props.period).DD}days </div> : null }
+        {toYearMonthDay(period).YY ? <div> {toYearMonthDay(period).YY}years </div> : null }
+        {toYearMonthDay(period).MM ? <div> {toYearMonthDay(period).MM}months </div> : null }
+        {toYearMonthDay(period).DD ? <div> {toYearMonthDay(period).DD}days </div> : null }
       </div>
     )
   }
@@ -61,6 +47,7 @@ export default class SkillHistoryTileComponent extends React.Component {
    if(el) {
      if( (el.parentElement.offsetWidth - el.offsetWidth - parseInt(left))<0  ) {
        el.style.left  = parseInt(left) - el.offsetWidth + 'px';
+
      }
    }
   }
@@ -75,15 +62,14 @@ export default class SkillHistoryTileComponent extends React.Component {
 
     let period = 0;
     if(item){
-      const t2 =  item[1] ? new  Date(item[1]) : new Date()
-      const t1 =  item[0] ? new  Date(item[0]) : new Date()
+      const t2 =  item[1] ? new  NormalDate(item[1]) : new Date()
+      const t1 =  item[0] ? new  NormalDate(item[0]) : new Date()
       period = t2.getTime() - t1.getTime()
     }
 
     return(
       <div className={styl.absolute}  style={{left, top, display}} ref={el=>this.transformPosition(el, left)}>
         <Ymonthday period={period}/>
-
       </div>
     )
   }

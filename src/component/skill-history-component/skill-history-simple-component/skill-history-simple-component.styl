@@ -2,12 +2,19 @@
 .history-table
   min-width 50%
   margin 0 -8px
+  &>thead
+    font-weight bold
   tr:hover
     background $color-hover-bookmark
   td:nth-child(1)
     font-weight bold
   td:nth-child(2)
-    text-align right
+    text-align left
+  td:nth-child(3)
+    text-align left
   td
-    width 50%
+    width 33%
     padding 5px 8px
+.period>div
+  display inline-block
+  margin-right 8px
