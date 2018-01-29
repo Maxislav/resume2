@@ -1,16 +1,39 @@
 [
   {
-    "scope": "Android",
+    "scope": "Android application",
     "name": "EnCon",
     "ico": "./img/asset/encon-ico.webp",
     "mainImg": "./img/asset/encon/main.jpg",
     "play_url": "https://play.google.com/store/apps/details?id=com.atlas.mars.englishcon&hl=ru",
-    "description" : "Very simple application for memorizing words. Just add the unfamiliar words and their translations and memorize when you have a free time. You can hide and show translations with a single touch. To fix the result, you need ten times correctly to make the word of mixed letters.",
+    "description": "Very simple application for memorizing words. Just add the unfamiliar words and their translations and memorize when you have a free time. You can hide and show translations with a single touch. To fix the result, you need ten times correctly to make the word of mixed letters.",
+    "git_url": "https://github.com/Maxislav/Englishcon",
     "imgs": [
       "./img/asset/encon/01.webp",
       "./img/asset/encon/02.webp",
       "./img/asset/encon/03.webp"
     ]
-
+  },
+  {
+    "scope": "Android application",
+    "name": "Roveron",
+    "ico": "./img/asset/roveron/roveron-ico.webp",
+    "mainImg": "./img/asset/roveron/main.webp",
+    "play_url": "https://play.google.com/store/apps/details?id=com.atals.mars.roveron&hl=en",
+    "description": "",
+    "git_url": "https://github.com/Maxislav/bike-atlas-android",
+    "descriptionList": [
+      "Current speed.",
+      "Average speed per period. ",
+      "Importing * .GPX from the CD card ",
+      "Export * . GPX ",
+      "Routing ",
+      "Estimated travel time ",
+      "Wind information (direction speed)"
+    ],
+    "imgs": [
+      "./img/asset/roveron/01.webp",
+      "./img/asset/roveron/02.webp",
+      "./img/asset/roveron/03.webp"
+    ]
   }
 ]
