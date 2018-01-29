@@ -16,6 +16,19 @@ const Description = ({ data }) => {
   return (<div>{data.description}</div>)
 }
 
+const PlayPrism = ({ data }) => {
+  if (data.play_url) {
+    return (
+      <div className={styl.play_prism}>
+        <a href={data.play_url} target="_blank">
+          <img src="./img/play_prism_hlock.png"/>
+        </a>
+      </div>
+    )
+  }
+  return null
+}
+
 export class OwnItemProjectComponent extends Component {
 
   constructor(...args) {
@@ -29,14 +42,13 @@ export class OwnItemProjectComponent extends Component {
      * @property {string} name
      */
     const { data } = this.props
-    // console.log(data)
     return (
       <div className={styl.component}>
         <div className={styl.bookmark}>
           <div>
             <div>
-              <a href={data.play_url} target="_blank">
-                <h2>{data.name}</h2>
+              <a href={data.web_url || data.play_url} target="_blank">
+                <h3>{data.name}</h3>
               </a>
             </div>
           </div>
@@ -49,27 +61,21 @@ export class OwnItemProjectComponent extends Component {
             <img className={styl.mainImage} src={data.mainImg}/>
             <img className={styl.ico} src={data.ico}/>
             <Description data={data}/>
-            <div>
+            <div className={styl.git}>
               <h3>
                 Git: <a href={data.git_url}>{data.git_url}</a>
               </h3>
             </div>
-            <div className={styl.play_prism}>
-              <a href={data.play_url} target="_blank">
-                <img src="./img/play_prism_hlock.png"/>
-              </a>
-            </div>
+            <PlayPrism data={data}/>
+
             <div className={styl.imgs}>
               {data.imgs.map((item, index) => (
                 <img src={item} key={index}/>
               ))}
             </div>
-
             <div className={styl.clear_both}>
-
             </div>
           </div>
-
         </div>
       </div>
     )

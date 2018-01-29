@@ -1,5 +1,28 @@
 [
   {
+    "scope": "Website",
+    "name": "Borispol radar",
+    "ico": "./img/asset/borispol-radar/icon.png",
+    "mainImg": "./img/asset/borispol-radar/main-img.png",
+    "play_url": "",
+    "web_url": "http://meteo-radar.info/#/radar",
+    "git_url": "https://github.com/Maxislav/borispol-radar2",
+    "description":"Meteo-radar and Forecast. Automate calculate distance from rainfall or snowstorm to you location.",
+    "descriptionList": [
+      "Distance to rain",
+      "Infrared Visible satellite images",
+      "World rain map",
+      "Real time sunshine"
+    ],
+
+    "imgs": [
+      "./img/asset/borispol-radar/01.png",
+      "./img/asset/borispol-radar/02.png",
+      "./img/asset/borispol-radar/03.png",
+      "./img/asset/borispol-radar/04.png"
+    ]
+  },
+  {
     "scope": "Android application",
     "name": "EnCon",
     "ico": "./img/asset/encon-ico.webp",
@@ -13,6 +36,7 @@
       "./img/asset/encon/03.webp"
     ]
   },
+
   {
     "scope": "Android application",
     "name": "Roveron",
