@@ -55,9 +55,12 @@ export class OwnItemProjectComponent extends Component {
         </div>
         <div className={styl.overflow} style={{ padding: "2px 8px 8px 8px" }}>
           <div className={styl.content}>
-            <h2>
-              {data.scope}
-            </h2>
+            <div className={styl.app_name}>
+              <h2>
+                {data.scope}
+              </h2>
+              <PlayPrism data={data}/>
+            </div>
             <img className={styl.mainImage} src={data.mainImg}/>
             <img className={styl.ico} src={data.ico}/>
             <Description data={data}/>
@@ -66,7 +69,7 @@ export class OwnItemProjectComponent extends Component {
                 Git: <a href={data.git_url}>{data.git_url}</a>
               </h3>
             </div>
-            <PlayPrism data={data}/>
+
 
             <div className={styl.imgs}>
               {data.imgs.map((item, index) => (

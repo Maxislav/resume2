@@ -4,7 +4,7 @@ import {xhrGet} from "../../../asset/xhr-get";
 
 const $contact = []
 
-export default class ContactInfoComponent extends React.Component{
+export class ContactInfoComponent extends React.Component{
 
   constructor(...args){
     super(...args)

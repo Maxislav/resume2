@@ -1,11 +1,11 @@
 import React from 'react';
 import styl from "./hash-router-component.styl";
 import SkillHistoryComponent from '../skill-history-component/skill-history-component';
-import ExperienceComponent from  '../experience-component/experience-component';
+import {ExperienceComponent} from  '../experience-component/experience-component';
 import GlComponent from '../gl-component/gl-component'
 import Gl2Component from '../gl-2-component/gl-2-component'
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
-import OwnProjectComponent from '../own-project-component/own-project-component'
+import {OwnProjectComponent} from '../own-project-component/own-project-component'
 
 import {
   BrowserRouter as Router,
@@ -16,8 +16,9 @@ import {
   Switch
 
 } from 'react-router-dom';
-import ContactComponent from "../contact-component/contact-component";
+import {ContactComponent} from "../contact-component/contact-component";
 import {posXY, windowSize} from "../../asset/position";
+import {ForPrintComponent} from "../for-print-component/for-print-component";
 
 
 
@@ -49,6 +50,9 @@ class DefaultComponent extends React.Component{
         break;
       case 'ownproject' :
         this.childComponent = OwnProjectComponent
+        break;
+      case 'forprint' :
+        this.childComponent = ForPrintComponent
         break;
       default:
         return(<Redirect to='/itskill'/>)
@@ -87,6 +91,7 @@ export default class HashRouterComponent extends React.Component{
             <li><NavLink to="/experience" activeStyle={{ background:'#fff' }}>Commercial experience</NavLink></li>
             <li><NavLink to="/ownproject" activeStyle={{ background:'#fff' }}>Own projects</NavLink></li>
             <li><NavLink to="/contact" activeStyle={{ background:'#fff' }}>Contact</NavLink></li>
+            <li><NavLink to="/forprint" activeStyle={{ background:'#fff' }}>For print</NavLink></li>
             {/*<li><NavLink to="/gl" activeStyle={{ background:'#bfe1ff' }}>GL</NavLink></li>*/}
             {/*<li><NavLink to="/rain" activeStyle={{ background:'#bfe1ff' }}>Rain</NavLink></li>*/}
           </ul>

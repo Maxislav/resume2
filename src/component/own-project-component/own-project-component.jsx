@@ -11,7 +11,7 @@ import {OwnItemProjectComponent} from "./own-item-project-component/own-item-pro
     list: store.ownProjectReducer.list,
   }
 })
-export default class OwnProjectComponent extends Component{
+export class OwnProjectComponent extends Component{
 
 	constructor(...args){
 		super(...args);

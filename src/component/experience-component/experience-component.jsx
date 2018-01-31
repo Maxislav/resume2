@@ -9,7 +9,7 @@ import ExperienceItemComponent from './experience-item-component/experience-item
   	list: store.experienceReducer.list,
 	}
 })
-export default class ExperienceComponent extends React.Component{
+export class ExperienceComponent extends React.Component{
 
 	componentDidMount(e){
 	    this.props.dispatch({

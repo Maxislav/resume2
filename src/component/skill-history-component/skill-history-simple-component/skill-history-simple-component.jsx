@@ -38,7 +38,7 @@ const StarDate = ({dateList}) => {
     history: store.skillReducer.history,
   }
 })
-export default class SkillHistorySimpleComponent extends React.Component{
+export class SkillHistorySimpleComponent extends React.Component{
 
   constructor(...args){
     super(...args)
@@ -64,7 +64,7 @@ export default class SkillHistorySimpleComponent extends React.Component{
               Start date
             </td>
             <td>
-              Period
+              Total time
             </td>
           </tr>
         </thead>

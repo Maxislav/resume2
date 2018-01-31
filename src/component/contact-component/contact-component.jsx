@@ -1,12 +1,12 @@
 import React from "react";
 import styl from './contact-component.styl';
 import defineload from "../../asset/defineload";
-import ContactInfoComponent from './contact-info-component/contact-info-component'
+import {ContactInfoComponent} from './contact-info-component/contact-info-component'
 
 const {Component} = React;
 
 
-export default class ContactComponent extends Component{
+export class ContactComponent extends Component{
 
   /**
    * @type {Promise}

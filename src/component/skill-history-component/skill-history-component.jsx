@@ -1,9 +1,9 @@
-import React from 'react';
-import SkillHistorySimpleComponent from './skill-history-simple-component/skill-history-simple-component';
+import React , {Component} from 'react';
+import {SkillHistorySimpleComponent} from './skill-history-simple-component/skill-history-simple-component';
 import styl from './skill-history-component.styl';
 import {autobind} from 'core-decorators';
 import {connect} from 'react-redux'
-import ContactInfoComponent from '../../component/contact-component/contact-info-component/contact-info-component'
+import {ContactInfoComponent} from '../../component/contact-component/contact-info-component/contact-info-component'
 import Transition from 'react-transition-group/Transition';
 import {SkillHistoryDetailComponent} from './skill-history-detail-component/skill-history-detail-component'
 
@@ -62,8 +62,7 @@ const SkillHistory = ({ in: inProp }) => {
     data: store.hoverReducer.data
   }
 })
-export default class SkillHistoryComponent extends React.Component {
-
+export default class SkillHistoryComponent extends Component {
 
   constructor(props) {
     super(props);
