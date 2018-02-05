@@ -6,6 +6,7 @@ import {connect} from 'react-redux'
 import {ContactInfoComponent} from '../../component/contact-component/contact-info-component/contact-info-component'
 import Transition from 'react-transition-group/Transition';
 import {SkillHistoryDetailComponent} from './skill-history-detail-component/skill-history-detail-component'
+import {posXY, windowSize} from "../../asset/position";
 
 
 const transitionDuration = 100;
@@ -54,6 +55,8 @@ const SkillHistory = ({ in: inProp }) => {
   )
 }
 
+
+
 @connect((store) => {
   return {
     filterBy: store.skillReducer.filterBy,
@@ -69,6 +72,7 @@ export default class SkillHistoryComponent extends Component {
     this.state = {
       shortView: false
     }
+    console.log(this.props.location)
   }
 
   @autobind
@@ -78,10 +82,15 @@ export default class SkillHistoryComponent extends Component {
     })
   }
 
+  componentDidMount(e){
+    const height = windowSize().height - posXY(this.scrollEl).y
+    this.scrollEl.style.height = height+'px'
+  }
+
 
   render() {
     return (
-      <div className={styl.content}>
+      <div className={styl.component} ref={el=>this.scrollEl=el}>
         <div>
           <ContactInfoComponent/>
         </div>

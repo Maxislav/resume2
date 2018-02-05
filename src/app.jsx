@@ -1,22 +1,35 @@
 import React from 'react';
 import TitleComponent from './component/title-component/title-component';
-import appStyl from './app.styl';
+import styl from './app.styl';
 import './styl/animation.styl'
 
 
-
 import HashRouterComponent from "./component/hash-router-component/hash-router-component";
+import {connect} from "react-redux";
 
 
-export default class App extends React.Component{
-    css = appStyl;
-    render(){
-        return (
-            <div className={this.css.content}>
-                <TitleComponent/>
-                <HashRouterComponent/>
-            </div>
-        )
-    }
+const stylOverFlow = {
+  overflowY:'hidden',
+  maxHeight: '100%'
+}
+
+console.log(styl)
+
+@connect((store) => {
+  return {
+    currentLocation: store.locationReducer.currentLocation,
+  }
+})
+export default class App extends React.Component {
+  render() {
+
+    console.log(this.props.currentLocation)
+    return (
+      <div className={styl.content} style={this.props.currentLocation =='/forprint' ? null: stylOverFlow}>
+        <TitleComponent/>
+        <HashRouterComponent/>
+      </div>
+    )
+  }
 
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import SkillHistoryItemStyl from './skill-history-item-component.styl';
+import styl from './skill-history-item-component.styl';
 import { autobind } from 'core-decorators';
 import hoverReducer from "../../../reduscers/hover-reducer";
 import connect from "react-redux/es/connect/connect";
@@ -71,23 +71,18 @@ export default class SkillHistoryItemComponent extends React.Component {
 	}
 
 
-
-
-
 	render() {
 		return (
-
-			<div>
-				{/*<div>{this.props.data.xy.x}oo</div>*/}
+			<div >
 				<div>
 					<b>{this.props.name}</b>
 				</div>
-				<ul className={SkillHistoryItemStyl.row}>
+				<ul className={styl.row}>
 					{
 						this.props.date.map((item, index) => {
 							return (
 								<li key={index}  ref={el=>this.getPositionLeft(el, item)}
-										className={SkillHistoryItemStyl.it}
+										className={styl.it}
 										onMouseMove={e=>this.onMouseMove(e, item)}
                     onMouseEnter={e=>this.onMouseEnter(e, item)}
                     onMouseLeave={e=>this.onMouseLeave(e, item)}

@@ -19,16 +19,30 @@ import {
 import {ContactComponent} from "../contact-component/contact-component";
 import {posXY, windowSize} from "../../asset/position";
 import {ForPrintComponent} from "../for-print-component/for-print-component";
+import {connect} from "react-redux";
 
 
 
+@connect((store) => {
+  return {
+    currentLocation: store.locationReducer.currentLocation,
+  }
+})
 
 class DefaultComponent extends React.Component{
   constructor(...args){
     super(...args)
     this.childComponent = SkillHistoryComponent
-
   }
+
+  componentWillMount(){
+    this.props.dispatch({
+      type:'LOCATION_CHANGE',
+      currentLocation: this.props.location.pathname
+    })
+  }
+
+
   render(p){
     //console.log(this.props.match.params.l)
     switch (this.props.match.params.l){
@@ -59,7 +73,7 @@ class DefaultComponent extends React.Component{
         //this.childComponent = SkillHistoryComponent
     }
     return(
-      <Route exact path={this.props.location.pathname} component={this.childComponent}/>
+      <Route exact path={this.props.location.pathname} component={this.childComponent} onChange={this.plp}/>
     )
   }
 }
@@ -77,14 +91,18 @@ export default class HashRouterComponent extends React.Component{
 
   componentDidMount(e){
 
-    const height = windowSize().height - posXY(this.scrollEl).y
-    this.scrollEl.style.height = height+'px'
+    //const height = windowSize().height - posXY(this.scrollEl).y
+    //this.scrollEl.style.height = height+'px'
+    //console.log('mounted ')
+  }
 
+  onRouteChange(){
+    console.log('oldo')
   }
 
   render() {
     return (
-      <HashRouter >
+      <HashRouter>
         <div>
           <ul className={styl['nav-bar']}>
             <li><NavLink to="/itskill" activeStyle={{ background:'#fff' }}>IT skill</NavLink></li>
@@ -96,7 +114,13 @@ export default class HashRouterComponent extends React.Component{
             {/*<li><NavLink to="/rain" activeStyle={{ background:'#bfe1ff' }}>Rain</NavLink></li>*/}
           </ul>
           <div ref={el=>this.scrollEl=el} className={styl.scroll}>
-            <Route render = {({location}) => {
+            <Route  onChange={this.onRouteChange}  render = {({location}) => {
+
+              /*this.props.dispatch({
+                type:'LOCATION_CHANGE',
+                location: location.pathname
+              })*/
+
               if(location.pathname =='/'){
                 return (<Redirect to='/itskill'/>)
               }
@@ -107,7 +131,7 @@ export default class HashRouterComponent extends React.Component{
                       key={location.pathname || 'olol'}
                       classNames='fade'
                       timeout={{ enter: 500, exit: 500}}>
-                      <Route location={location} key={location.pathname} path="/:l" component={DefaultComponent} />
+                      <Route location={location} key={location.pathname} path="/:l" component={DefaultComponent} onChange={this.onRouteChange} />
                     </CSSTransition>
                   </TransitionGroup>
                 </div>

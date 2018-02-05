@@ -34,7 +34,7 @@ export class ForPrintComponent extends Component{
 
   render(){
     return(
-      <div className={styl["for-print-component"]}>
+      <div className={styl.component}>
         <ContactInfoComponent/>
         <SkillHistorySimpleComponent/>
         <ExperienceComponent/>
