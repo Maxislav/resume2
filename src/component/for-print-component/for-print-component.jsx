@@ -18,6 +18,7 @@ export class ForPrintComponent extends Component{
 
   constructor(...args){
     super(...args);
+    this.setState = this.setState.bind(this)
     if(!this.props.ownProjectList.length){
       this.props.dispatch({
         type:'FETCH_OWN_PROJECT',
@@ -30,6 +31,7 @@ export class ForPrintComponent extends Component{
         payload: axios.get('./cv-json-data/skill-history.json')
       });
     }
+
   }
 
   render(){
@@ -37,7 +39,9 @@ export class ForPrintComponent extends Component{
       <div className={styl.component}>
         <ContactInfoComponent/>
         <SkillHistorySimpleComponent/>
+        <h2>Commercial experience</h2>
         <ExperienceComponent/>
+        <h2>Own projects</h2>
         <OwnProjectComponent/>
       </div>
     )

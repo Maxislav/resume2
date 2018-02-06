@@ -6,16 +6,16 @@ import {OwnItemProjectComponent} from "./own-item-project-component/own-item-pro
 import {posXY, windowSize} from "../../asset/position";
 
 
-
 @connect((store) => {
   return {
     list: store.ownProjectReducer.list,
   }
 })
 export class OwnProjectComponent extends Component{
-
+  isLocationDefine = false
 	constructor(...args){
 		super(...args);
+    this.isLocationDefine = !!this.props.location
     if(!this.props.list.length){
       this.props.dispatch({
         type:'FETCH_OWN_PROJECT',
@@ -33,7 +33,7 @@ export class OwnProjectComponent extends Component{
 
 	render(){
 		return(
-			<div className={styl.component} ref={el=>this.scrollEl=el}>
+			<div className={styl.component} ref={el=>this.scrollEl=el} >
         {this.props.list.map((item, index)=>{
           return (<OwnItemProjectComponent key={index} data={item}/>)
         })}

@@ -49,6 +49,9 @@ module.exports = {
 				]
 			},
 			{
+        from:'./Maxim Lipatov.pdf',
+			},
+			{
 				from:'./cv-version.json'
 			},
 

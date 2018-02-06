@@ -5,14 +5,22 @@ import axios from 'axios'
 import ExperienceItemComponent from './experience-item-component/experience-item-component'
 import {posXY, windowSize} from "../../asset/position";
 
+const stylClearPadding = {
+  padding: 0
+}
+
 @connect((store) => {
   return {
     list: store.experienceReducer.list,
   }
 })
 export class ExperienceComponent extends Component {
+
+  isLocationDefine = false
+
   constructor(...args) {
     super(...args)
+    this.isLocationDefine = !!this.props.location
   }
 
 
@@ -22,7 +30,7 @@ export class ExperienceComponent extends Component {
       payload: axios.get('cv-json-data/experience.json')
     });
 
-    if (this.props.location) {
+    if (this.isLocationDefine) {
       const height = windowSize().height - posXY(this.scrollEl).y
       this.scrollEl.style.height = height + 'px'
     }
@@ -31,7 +39,7 @@ export class ExperienceComponent extends Component {
 
   render() {
     return (
-      <div className={styl.component} ref={el => this.scrollEl = el}>
+      <div className={styl.component} ref={el => this.scrollEl = el} style={this.isLocationDefine ? null :stylClearPadding}>
         {this.props.list.map((item, index) => {
           return (<ExperienceItemComponent data={item} key={index}/>)
         })}

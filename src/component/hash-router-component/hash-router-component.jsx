@@ -28,14 +28,13 @@ import {connect} from "react-redux";
     currentLocation: store.locationReducer.currentLocation,
   }
 })
-
 class DefaultComponent extends React.Component{
   constructor(...args){
     super(...args)
     this.childComponent = SkillHistoryComponent
   }
 
-  componentWillMount(){
+  componentDidMount(){
     this.props.dispatch({
       type:'LOCATION_CHANGE',
       currentLocation: this.props.location.pathname

@@ -2,13 +2,18 @@
 .component
   margin -8px
   position relative
+
 .content
-  //padding 8px
   margin-bottom 15px
   $box-shadow()
   padding 15px
   &>*:not(img)
     margin  15px 0
+@media print
+  .content
+    padding 0
+    box-shadow none
+    border-bottom 2px solid gray
 .app_name
   display flex
   align-items center

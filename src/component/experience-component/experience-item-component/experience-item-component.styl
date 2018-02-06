@@ -1,8 +1,13 @@
 @import "../../../styl/constant.styl"
+
 .container
   padding 8px
   margin-bottom 15px
   $box-shadow()
+@media print
+  .container
+    box-shadow none
+    border-bottom 2px solid gray
 .row
   margin-left -8px
   margin-right -8px

@@ -13,7 +13,6 @@ const stylOverFlow = {
   maxHeight: '100%'
 }
 
-console.log(styl)
 
 @connect((store) => {
   return {
@@ -23,7 +22,6 @@ console.log(styl)
 export default class App extends React.Component {
   render() {
 
-    console.log(this.props.currentLocation)
     return (
       <div className={styl.content} style={this.props.currentLocation =='/forprint' ? null: stylOverFlow}>
         <TitleComponent/>
