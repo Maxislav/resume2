@@ -72,7 +72,6 @@ export default class SkillHistoryComponent extends Component {
     this.state = {
       shortView: false
     }
-    console.log(this.props.location)
   }
 
   @autobind

@@ -4,6 +4,16 @@ import {xhrGet} from "../../../asset/xhr-get";
 
 const $contact = []
 
+
+const A = ({text}) =>{
+  const matches = text.match(/^https?/)
+  if(matches){
+    return (<a href={text} target='_blank'>{text}</a>)
+  }
+  return (<span>{text}</span>)
+}
+
+
 export class ContactInfoComponent extends React.Component{
 
   constructor(...args){
@@ -22,7 +32,7 @@ export class ContactInfoComponent extends React.Component{
 
   }
 
-  render(){
+  render() {
     return (
       <table className={styl['contact-table']}>
         <tbody>
@@ -30,14 +40,15 @@ export class ContactInfoComponent extends React.Component{
           this.state.contact.map((contact, index) => {
             return <tr key={index}>
               {
+
                 contact.map((item, index2) => {
                   if (index == 0) {
-                    return <td colSpan="2" key={index2} className={styl['my-name']}>
+                    return <td colSpan={contact.length == 2 ? 1 : 2} key={index2} className={styl['my-name']}>
                       {item}
                     </td>
                   }
                   return <td key={index2}>
-                    {item}
+                    <A text={item}/>
                   </td>
                 })
               }
