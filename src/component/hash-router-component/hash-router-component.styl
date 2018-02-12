@@ -1,7 +1,10 @@
 @import "../../styl/constant.styl"
+
 .nav-bar
   display flex
   background: linear-gradient(to right, rgba(134,174,204,1) 0%,rgba(212,228,239,1) 100%);
+  @media print
+     display none
   &>li
     display block
     padding 8px 0
