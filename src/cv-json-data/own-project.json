@@ -20,6 +20,9 @@
       "./img/asset/bike-atlas/01.png",
       "./img/asset/bike-atlas/02.png"
 
+    ],
+    "libs": [
+      "Angular 2+"
     ]
   },
   {
@@ -33,7 +36,7 @@
     "description":"Meteo-radar and Forecast. Automate calculate distance from rainfall or snowstorm to you location.",
     "descriptionList": [
       "Distance to rain",
-      "Infrared Visible satellite images",
+      "Infrared, Visible, Satellite images",
       "World rain map",
       "Real time sunshine"
     ],
@@ -44,6 +47,9 @@
       "./img/asset/borispol-radar/02.png",
       "./img/asset/borispol-radar/03.png"
 
+    ],
+    "libs": [
+      "Vue.js"
     ]
   },
   {
@@ -67,6 +73,10 @@
       "./img/asset/roveron/01.webp",
       "./img/asset/roveron/02.webp",
       "./img/asset/roveron/03.webp"
+    ],
+    "libs": [
+      "Android(native)",
+      "MapboxGl for android"
     ]
   },
   {
@@ -81,6 +91,9 @@
       "./img/asset/encon/01.webp",
       "./img/asset/encon/02.webp",
       "./img/asset/encon/03.webp"
+    ],
+    "libs": [
+      "Android(native)"
     ]
   },
   {
@@ -98,6 +111,9 @@
       "./img/asset/any-control/04.webp",
       "./img/asset/any-control/05.webp",
       "./img/asset/any-control/06.webp"
+    ],
+    "libs": [
+      "Android(native)"
     ]
   }
 

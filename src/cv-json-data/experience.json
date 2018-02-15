@@ -12,7 +12,7 @@
 			null
 		],
 		"libs": [
-			"Angular",
+			"Angular1",
 			"MapboxGl",
 			"PixiJS",
 			"WebGl native"
@@ -33,7 +33,7 @@
 			"1.06.2016"
 		],
 		"libs": [
-			"Angular"
+			"Angular1"
 		],
 		"img": "./img/asset/loyverse.png"
 	},

@@ -70,14 +70,6 @@ export default class ExperienceItemComponent extends Component{
           </div>
         </div>
 
-        <div className={styl['row']}>
-          <div>
-            Responsibility:
-          </div>
-          <div>
-            {this.props.data.responsibility}
-          </div>
-        </div>
         <div className={styl.row}>
           <div>
             Purpose:

@@ -1,6 +1,13 @@
 import React, {Component} from 'react'
 import styl from './own-item-project-component.styl'
 
+
+/**
+ *
+ * @param {Object}data
+ * @property {Array} descriptionList
+ * @return {*}
+ */
 const Description = ({ data }) => {
   if (data.descriptionList && data.descriptionList.length) {
     return (
@@ -8,14 +15,25 @@ const Description = ({ data }) => {
         <div>
           {data.description}
         </div>
-        <ul className={styl.ul}>
-          {data.descriptionList.map((item, index) => (<li key={index}>{item}</li>))}
-        </ul>
+        <div style={{ clear: "left" }}>
+          <h3>
+            Purpose:
+          </h3>
+          <ul className={styl.ul}>
+            {data.descriptionList.map((item, index) => (<li key={index}>{item}</li>))}
+          </ul>
+        </div>
+
       </div>)
   }
   return (<div>{data.description}</div>)
 }
-
+/**
+ *
+ * @param {Object}data
+ * @property {string} play_url
+ * @return {*}
+ */
 const PlayPrism = ({ data }) => {
   if (data.play_url) {
     return (
@@ -28,6 +46,21 @@ const PlayPrism = ({ data }) => {
   }
   return null
 }
+const Libs = ({ data: list }) => {
+  if (list)
+    return (<div>
+      <h3> Main Frameworks:</h3>
+      <ul className={styl.ul}>
+
+        {list.map((it, index) => (<li key={index}>{it}</li>))}
+      </ul>
+
+    </div>)
+  return null
+}
+
+
+
 
 export class OwnItemProjectComponent extends Component {
 
@@ -64,6 +97,7 @@ export class OwnItemProjectComponent extends Component {
             <img className={styl.mainImage} src={data.mainImg}/>
             <img className={styl.ico} src={data.ico}/>
             <Description data={data}/>
+            <Libs data={data.libs}/>
             <div className={styl.git}>
               <h3>
                 Git: <a href={data.git_url}>{data.git_url}</a>
