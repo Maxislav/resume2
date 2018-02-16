@@ -8,6 +8,7 @@ import {createStore, applyMiddleware} from "redux";
 import promise from 'redux-promise-middleware'
 import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
+import {ModalComponent} from "./component/modal-component/modal-component";
 /*
 const reducer = (state = {}, action) => {
 	return state
