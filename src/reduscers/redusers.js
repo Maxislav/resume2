@@ -5,6 +5,7 @@ import hoverReducer from './hover-reducer'
 import experienceReducer from './experience-reducer'
 import ownProjectReducer from './own-project-reducer'
 import {locationReducer} from './location-reducer'
+import {modalReducer} from './modal-reducer'
 const reducers = combineReducers({
   skillReducer,
   filterReducer,
@@ -12,6 +13,7 @@ const reducers = combineReducers({
   experienceReducer,
   ownProjectReducer,
   locationReducer,
+  modalReducer
 });
 
 export default reducers;

@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import styl from './own-item-project-component.styl'
-
+import {connect} from 'react-redux'
+import {autobind} from "core-decorators";
 
 /**
  *
@@ -62,10 +63,20 @@ const Libs = ({ data: list }) => {
 
 
 
+@connect((store)=>({modal: store.modalReducer}))
 export class OwnItemProjectComponent extends Component {
 
   constructor(...args) {
     super(...args);
+  }
+
+
+  @autobind
+  showModal(el, src){
+    this.props.dispatch({
+      type: 'MODAL_SHOW',
+      imgSrc: src
+    })
   }
 
   render() {
@@ -94,7 +105,7 @@ export class OwnItemProjectComponent extends Component {
               </h2>
               <PlayPrism data={data}/>
             </div>
-            <img className={styl.mainImage} src={data.mainImg}/>
+            <img className={styl.mainImage} src={data.mainImg} onClick={e=>this.showModal(e.target, data.mainImg)}/>
             <img className={styl.ico} src={data.ico}/>
             <Description data={data}/>
             <Libs data={data.libs}/>
@@ -103,8 +114,6 @@ export class OwnItemProjectComponent extends Component {
                 Git: <a href={data.git_url}>{data.git_url}</a>
               </h3>
             </div>
-
-
             <div className={styl.imgs}>
               {data.imgs.map((item, index) => (
                 <img src={item} key={index}/>

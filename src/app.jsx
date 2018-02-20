@@ -9,7 +9,6 @@ import {connect, Provider} from "react-redux";
 import {getVisibleTodos, ModalComponent} from "./component/modal-component/modal-component";
 import {createStore} from "redux";
 
-let store = createStore(getVisibleTodos)
 
 const stylOverFlow = {
   overflowY:'hidden',
@@ -27,11 +26,9 @@ export default class App extends React.Component {
 
     return (
       <div className={styl.content} style={this.props.currentLocation =='/forprint' ? null: stylOverFlow}>
+        <ModalComponent/>
         <TitleComponent/>
         <HashRouterComponent/>
-        <Provider store={store}>
-          <ModalComponent/>
-        </Provider>
       </div>
     )
   }
