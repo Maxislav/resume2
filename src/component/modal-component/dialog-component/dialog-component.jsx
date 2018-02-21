@@ -61,7 +61,7 @@ export class Dialog extends Component{
     this.mount = 2
   }
 
-  get isHere(){
+  get isMounted(){
     return this.mount === 1
   }
 
@@ -69,7 +69,7 @@ export class Dialog extends Component{
   initComponent(){
 
     setTimeout(()=>{
-      if (this.isHere){
+      if (this.isMounted){
         this.setState({
           style: this.bigStyle
         })
@@ -83,14 +83,7 @@ export class Dialog extends Component{
     const {src}= this.props
     return (
       <div className={className.component} style={{...this.style, ...this.state.style}} ref={this.initComponent}>
-
         <img src={src.url} className={className.image}/>
-       {/* <div>
-          {src.url}
-        </div>
-        <div>
-          In develop progress
-        </div>*/}
       </div>
     )
   }
