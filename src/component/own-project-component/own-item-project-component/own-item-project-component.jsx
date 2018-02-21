@@ -75,7 +75,10 @@ export class OwnItemProjectComponent extends Component {
   showModal(el, src){
     this.props.dispatch({
       type: 'MODAL_SHOW',
-      imgSrc: src
+      src: {
+        el,
+        url: src
+      }
     })
   }
 
@@ -116,7 +119,7 @@ export class OwnItemProjectComponent extends Component {
             </div>
             <div className={styl.imgs}>
               {data.imgs.map((item, index) => (
-                <img src={item} key={index}/>
+                <img src={item} key={index}  onClick={e=>this.showModal(e.target, item)}/>
               ))}
             </div>
             <div className={styl.clear_both}>
