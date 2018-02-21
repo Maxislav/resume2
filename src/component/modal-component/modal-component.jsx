@@ -2,13 +2,15 @@ import React, {Component} from 'react'
 import className from './modal-component.styl'
 import {connect} from 'react-redux'
 import {autobind} from "core-decorators";
-import {Transition} from "react-transition-group";
 
-const transitionDelay = 2
 
-const duration = 300;
+const duration = 1000;
 
 const stylSize = {
+  inherit: {
+    width: 'inherit',
+    height: 'inherit',
+  },
   full: {
     width: '100%',
     height: '100%',
@@ -17,7 +19,7 @@ const stylSize = {
 
  const defaultStyle = {
    transition: `opacity ${duration}ms ease-in-out`,
-   opacity: 0,
+   opacity: 1,
    background: 'rgba(0,0,0,0.3)',
    ...stylSize.full
  }
@@ -39,55 +41,63 @@ const D = ({ src }) => {
     </div>
   )
 }
-let key = 0
 
 @connect((store) => ({ modal: store.modalReducer }))
 export class Mask extends Component {
   constructor(...args) {
     super(...args)
-
-
+    this.state = {
+      stylName: 'entering'
+    }
   }
 
   @autobind
   hideAll() {
-    this.props.dispatch({
-      type: 'MODAL_HIDE'
+    this.setState({
+      stylName: 'entering'
     })
-
+    setTimeout(() => {
+      this.props.dispatch({
+        type: 'MODAL_HIDE'
+      })
+      this.props.setTile('inherit')
+    }, duration)
   }
-
 
   @autobind
   maskInit(e) {
-
-    console.log('maskInit', this.props.isShow)
-
+    if (this.props.in) {
+      this.props.setTile('full')
+      setTimeout(() => {
+        this.setState({
+          stylName: 'entered'
+        })
+      })
+    }
   }
 
   componentDidMount() {
-
+   // ReactDOM.findDOMNode(this.refs.myTestInput).focus();
   }
 
   shouldComponentUpdate() {
     return true
   }
 
+  componentWillReceiveProps(nextProps) {
+
+  }
+
   render() {
-    console.log(this.props)
     return (
-      <Transition in={this.props.in} timeout={duration}>
-        {(state) => (
-          <div style={{
-            ...defaultStyle,
-            ...transitionStyles[state]
-          }} onClick={this.hideAll}>
-            <D src={this.props.modal.imgSrc}/>
-          </div>
-        )}
-      </Transition>
+      this.props.in ? <div onClick={this.hideAll}
+                           ref={this.maskInit}
+                           style={{ ...defaultStyle, ...transitionStyles[this.state.stylName] }}>
+
+        {this.props.children}
+      </div> : null
     )
-    return null
+
   }
 }
 
@@ -96,12 +106,24 @@ export class Mask extends Component {
 export class ModalComponent extends Component {
   constructor(...args){
     super(...args)
+    this.state = {
+      styleName: 'inherit'
+    }
   }
+
+  @autobind
+  setTile(name){
+    this.setState({
+      styleName: name
+    })
+  }
+
   render(){
-    const {isShow} = this.props.modal
     return(
-      <div className={className.component} style={isShow ? stylSize.full : null}>
-        <Mask in={this.props.modal.isShow}/>
+      <div className={className.component} style={stylSize[this.state.styleName]} >
+        <Mask in={this.props.modal.isShow} setTile={this.setTile}>
+          <D src={this.props.modal.imgSrc}/>
+        </Mask>
       </div>
     )
   }
