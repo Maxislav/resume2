@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import styl from  './contact-info-component.styl'
 import {xhrGet} from "../../../asset/xhr-get";
+import {NgIfComponent} from "../../ng-If-component/ng-If-component";
+import {autobind} from "core-decorators";
 
 const $contact = []
 const $education = []
@@ -21,7 +23,8 @@ export class ContactInfoComponent extends React.Component{
     super(...args)
     this.state = {
       contact: $contact,
-      education: $education
+      education: $education,
+      showOlolo: true
     };
 
     if(!$contact.length){
@@ -40,7 +43,13 @@ export class ContactInfoComponent extends React.Component{
           })
         })
     }
+  }
 
+  @autobind
+  onHide(){
+    this.setState({
+      showOlolo: !this.state.showOlolo
+    })
   }
 
   render() {
