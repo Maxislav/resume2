@@ -7,6 +7,7 @@ import {ContactInfoComponent} from '../../component/contact-component/contact-in
 import Transition from 'react-transition-group/Transition';
 import {SkillHistoryDetailComponent} from './skill-history-detail-component/skill-history-detail-component'
 import {posXY, windowSize} from "../../asset/position";
+import {NgIfComponent} from "../ng-If-component/ng-If-component";
 
 
 const transitionDuration = 100;
@@ -55,6 +56,27 @@ const SkillHistory = ({ in: inProp }) => {
   )
 }
 
+const ngIfStyle = {
+  enter: {
+    opacity: 0,
+    position: 'relative',
+    left: 'inherit',
+    top: 'inherit'
+  },
+  enterActive: {
+    opacity: 1
+  },
+  leave: {
+    opacity: 1,
+    position: 'absolute',
+    left: 0,
+    top: 0
+  },
+  leaveActive: {
+    opacity: 0
+  }
+}
+
 
 
 @connect((store) => {
@@ -97,7 +119,14 @@ export default class SkillHistoryComponent extends Component {
 
         <h2>&nbsp;</h2>
 
-        <SkillHistory in={!!this.state.shortView}/>
+        <div className={styl.relative}>
+          <NgIfComponent ngIf={!!this.state.shortView} transitionStyle={ngIfStyle}>
+            <SkillHistorySimpleComponent/>
+          </NgIfComponent>
+          <NgIfComponent ngIf={!this.state.shortView} transitionStyle={ngIfStyle}>
+            <SkillHistoryDetailComponent/>
+          </NgIfComponent>
+        </div>
       </div>
     )
   }
