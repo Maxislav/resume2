@@ -18,21 +18,22 @@ export class Dialog extends Component{
   constructor(...args){
     super(...args);
     const {el} = this.props.src;
-    const { width, height } = el;
+    const { width, height , naturalHeight , naturalWidth} = el;
+
 
     const { width: winWidth, height: winHeight } = windowSize();
 
     const {x: left, y: top} = posXY(el)
 
-    const j = (winWidth/winHeight) - (width/height);
+    const j = (winWidth/winHeight) - (naturalWidth/naturalHeight);
 
     let w = 0, h = 0;
     if (j < 0) {
       w = maxKeySize*winWidth;
-      h = w * height/width;
+      h = w * naturalHeight/naturalWidth;
     } else {
       h = maxKeySize * winHeight;
-      w = h * width/height;
+      w = h * naturalWidth/naturalHeight;
     }
 
     this.bigStyle.width = String(w).concat('px')
@@ -41,7 +42,7 @@ export class Dialog extends Component{
     this.bigStyle.top = String((winHeight - h)/2).concat('px')
 
     this.style = {
-      transition: 'all 0.5s',
+      transition: `all ${this.props.duration}ms`,
       width: String(width).concat('px'),
       height: String(height).concat('px'),
       left,

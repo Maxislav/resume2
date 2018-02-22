@@ -5,7 +5,7 @@ import {autobind} from "core-decorators";
 import {Dialog} from "./dialog-component/dialog-component";
 
 
-const duration = 1000;
+const duration = 300;
 
 const stylSize = {
   inherit: {
@@ -25,10 +25,6 @@ const stylSize = {
    ...stylSize.full
  }
 
- const transitionStyles = {
-     entering: { opacity: 0 },
-     entered:  { opacity: 1 },
-   };
 
 
 
@@ -36,15 +32,23 @@ const stylSize = {
 export class Mask extends Component {
   constructor(...args) {
     super(...args)
+
     this.state = {
-      styleKey: 'entering'
+      styleKey: 'entering',
+      style: {
+        opacity: 0
+      }
     }
+
+    this.prevIn = this.props.in
   }
 
   @autobind
   hideAll() {
     this.setState({
-      styleKey: 'entering'
+      style: {
+        opacity: 0
+      }
     })
     setTimeout(() => {
       this.props.dispatch({
@@ -54,36 +58,51 @@ export class Mask extends Component {
     }, duration)
   }
 
-  @autobind
-  maskInit(e) {
-    if (this.props.in) {
+
+  componentDidMount() {
+    this.isInUpdate(this.props.in)
+  }
+
+  componentDidUpdate(){
+    this.isInUpdate(this.props.in)
+  }
+
+  componentWillReceiveProps(nextProps) {
+   // console.log('nextProps', nextProps, this.props.in)
+    //this.isInUpdate(nextProps)
+  }
+
+  isInUpdate(next){
+    if(this.prevIn !== next){
+      const prev = this.prevIn
+      this.prevIn = next
+
+      this.onMountUpdate(next, prev)
+      return true
+    }
+    return false
+  }
+
+  onMountUpdate(nextIn, prevIn){
+    if (nextIn){
       this.props.setTile('full')
       setTimeout(() => {
         this.setState({
-          styleKey: 'entered'
+          style: {
+            opacity: 1
+          }
         })
       })
     }
-  }
-
-  componentDidMount() {
-   // ReactDOM.findDOMNode(this.refs.myTestInput).focus();
   }
 
   shouldComponentUpdate() {
     return true
   }
 
-  componentWillReceiveProps(nextProps) {
-
-  }
-
   render() {
     return (
-      this.props.in ? <div onClick={this.hideAll}
-                           ref={this.maskInit}
-                           style={{ ...defaultStyle, ...transitionStyles[this.state.styleKey] }}>
-
+      this.props.in ? <div onClick={this.hideAll} style={{ ...defaultStyle, ...this.state.style }}>
         {this.props.children}
       </div> : null
     )
@@ -112,7 +131,7 @@ export class ModalComponent extends Component {
     return(
       <div className={className.component} style={stylSize[this.state.styleName]} >
         <Mask in={this.props.modal.isShow} setTile={this.setTile}>
-          <Dialog src={this.props.modal.src}/>
+          <Dialog src={this.props.modal.src} duration={duration}/>
         </Mask>
       </div>
     )

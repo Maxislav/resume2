@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import dateFormat from 'dateformat'
 import styl from './experience-item-component.styl'
 import {NormalDate} from "../../../asset/normal-date";
+import {autobind} from "core-decorators";
+import {connect} from "react-redux";
 
 
 /**
@@ -20,15 +22,36 @@ const getDataStr = (date) =>{
   return 'Present time'
 }
 
-const ImgContainer = ({img}) =>{
-  if(img){
-    return (
-        <img src={img}/>
-    )
-  }else return null
+@connect((store)=>({modal: store.modalReducer}))
+class ImgContainer extends Component{
+  @autobind
+  showModal(el, src){
+    this.props.dispatch({
+      type: 'MODAL_SHOW',
+      src: {
+        el,
+        url: src
+      }
+    })
+  }
+
+  render (){
+    const {img} = this.props
+    if(img){
+      return (
+        <img src={img} onClick={e=>this.showModal(e.target, img)}/>
+      )
+    }else return null
+  }
 }
 
+
+
+
 export default class ExperienceItemComponent extends Component{
+
+
+
   render(){
     return(
       <div className={styl.container}>
