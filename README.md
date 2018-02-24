@@ -24,6 +24,11 @@ define you skill <b>./src/cv-json-data/*.json</b> files
 ```
 ~$ npm run prod
 ```
+
+### Build prod min
+```
+~$ npm run super-prod
+```
 Download files from ~/dist/* to you work dir
 
 
