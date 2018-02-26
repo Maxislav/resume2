@@ -3,7 +3,10 @@ import styl from './contact-component.styl';
 import defineload from "../../asset/defineload";
 import {ContactInfoComponent} from './contact-info-component/contact-info-component'
 
+
 const {Component} = React;
+
+
 
 
 export class ContactComponent extends Component{
