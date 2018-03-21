@@ -20,6 +20,7 @@ import {ContactComponent} from "../contact-component/contact-component";
 import {posXY, windowSize} from "../../asset/position";
 import {ForPrintComponent} from "../for-print-component/for-print-component";
 import {connect} from "react-redux";
+import {LazyLoadComponent} from "../lazy-load-component/lazy-load-component";
 
 
 
@@ -59,7 +60,6 @@ class DefaultComponent extends React.Component{
         break;
       case  'rain':
         this.childComponent = Gl2Component;
-
         break;
       case 'ownproject' :
         this.childComponent = OwnProjectComponent
@@ -67,6 +67,9 @@ class DefaultComponent extends React.Component{
       case 'forprint' :
         this.childComponent = ForPrintComponent
         break;
+        case 'lazyload':
+          this.childComponent = LazyLoadComponent;
+          break
       default:
         return(<Redirect to='/itskill'/>)
         //this.childComponent = SkillHistoryComponent
