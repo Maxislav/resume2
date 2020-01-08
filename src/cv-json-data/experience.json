@@ -1,94 +1,93 @@
-[  
-   {  
-      "position":"JavaScript developer",
-      "company":"Luxoft",
-      "subject":"Banking services",
-      "responsibility":"Creating user interface",
-      "purpose":[  
-         "Document exchange"
+[
+	{
+      "position": "JavaScript developer",
+      "company": "Luxoft",
+      "subject" : "Exchange of documents in electronic form",
+      "libs": [
+        "Angular",
+        "AngularJS"
       ],
-      "date":[  
-         "04.06.2018",
-         null
+      "date": [
+        "03.06.2018",
+        null
       ],
-      "libs":[  
-         "AngularGs",
-         "Angular7"
+      "purpose": [
+        "Manage Negotiation, signing a document"
       ],
-      "img":""
-   },
-   {  
-      "position":"JavaScript developer",
-      "company":"Infozahyst",
-      "subject":"Secret information",
-      "responsibility":"Secret information",
-      "purpose":[  
-         "Weapon system Ukraine"
-      ],
-      "date":[  
-         "01.06.2016",
-         "04.06.2018"
-      ],
-      "libs":[  
-         "Angular1",
-         "MapboxGl",
-         "PixiJS",
-         "WebGl native"
-      ],
-      "img":"./img/asset/infozahyst.jpg"
-   },
-   {  
-      "position":"JavaScript developer",
-      "company":"Unisystem",
-      "subject":"Create web interfaces. Main project \"TriniPOS\"",
-      "responsibility":"Creating a mobile application. HTML coding, сreate a data structure. ",
-      "purpose":[  
-         "POS-system",
-         "Manage your store and sales from a smartphone or tablet — increase your small business profit by making your sales easy and fast with Loyverse POS, manage inventory, visualize sales analytics, acquire, retain, engage your customers and multiply their average spend"
-      ],
-      "date":[  
-         "1.01.2015",
-         "1.06.2016"
-      ],
-      "libs":[  
-         "Angular1"
-      ],
-      "img":"./img/asset/loyverse.png"
-   },
-   {  
-      "position":"JavaScript developer",
-      "company":"Unisystem",
-      "subject":"Create web interfaces. Main project \"Ретеко кассир\"",
-      "responsibility":"Create web interface (design logic etc.). HTML coding, create a data structure. ",
-      "purpose":[  
-         "Cash register operation"
-      ],
-      "date":[  
-         "1.10.2013",
-         "1.01.2015"
-      ],
-      "libs":[  
-         "JQuery",
-         "RequireJs"
-      ],
-      "img":"./img/asset/reteco.png"
-   },
-   {  
-      "position":"JavaScript developer",
-      "company":"Intellect Service",
-      "subject":"Mobile Applications throw JS :)",
-      "responsibility":"Creating a mobile application. HTML coding, create a data structure. ",
-      "purpose":[  
-         "Electronic document in your phone.",
-         "Transactions with money",
-         "Payment etc."
-      ],
-      "date":[  
-         "01.04.2013",
-         "01.10.2013"
-      ],
-      "libs":[  
-         "Sencha touch"
-      ]
-   }
+      "img": "./img/asset/luxoft-ico.png"
+	},
+	{
+		"position": "JavaScript developer",
+		"company": "Infozahyst",
+		"subject" : "Secret information",
+		"responsibility": "Secret information",
+		"purpose": [
+			"Weapon system Ukraine"
+		],
+		"date": [
+			"01.06.2016",
+			"03.06.2018"
+		],
+		"libs": [
+			"Angular1",
+			"MapboxGl",
+			"PixiJS",
+			"WebGl native"
+		],
+		"img": "./img/asset/infozahyst.jpg"
+	},
+	{
+		"position": "JavaScript developer",
+		"company": "Unisystem",
+		"subject" : "Create web interfaces. Main project \"TriniPOS\"",
+		"responsibility": "Creating a mobile application. HTML coding, сreate a data structure. ",
+		"purpose": [
+			"POS-system",
+			"Manage your store and sales from a smartphone or tablet — increase your small business profit by making your sales easy and fast with Loyverse POS, manage inventory, visualize sales analytics, acquire, retain, engage your customers and multiply their average spend"
+		],
+		"date": [
+			"1.01.2015",
+			"1.06.2016"
+		],
+		"libs": [
+			"Angular1"
+		],
+		"img": "./img/asset/loyverse.png"
+	},
+	{
+		"position": "JavaScript developer",
+		"company": "Unisystem",
+		"subject" : "Create web interfaces. Main project \"Ретеко кассир\"",
+		"responsibility": "Create web interface (design logic etc.). HTML coding, create a data structure. ",
+		"purpose": [
+			"Cash register operation"
+		],
+		"date": [
+			"1.10.2013",
+			"1.01.2015"
+		],
+		"libs": [
+			"JQuery",
+			"RequireJs"
+		],
+		"img": "./img/asset/reteco.png"
+	},
+	{
+		"position": "JavaScript developer",
+		"company": "Intellect Service",
+		"subject" : "Mobile Applications throw JS :)",
+		"responsibility": "Creating a mobile application. HTML coding, create a data structure. ",
+		"purpose": [
+			"Electronic document in your phone.",
+			"Transactions with money",
+			"Payment etc."
+		],
+		"date": [
+			"01.04.2013",
+			"01.10.2013"
+		],
+		"libs": [
+			"Sencha touch"
+		]
+	}
 ]

@@ -1,5 +1,22 @@
 [
 	{
+      "position": "JavaScript developer",
+      "company": "Luxoft",
+      "subject" : "Exchange of documents in electronic form",
+      "libs": [
+        "Angular",
+        "AngularJS"
+      ],
+      "date": [
+        "03.06.2018",
+        null
+      ],
+      "purpose": [
+        "Manage Negotiation, signing a document"
+      ],
+      "img": "./img/asset/luxoft-ico.png"
+	},
+	{
 		"position": "JavaScript developer",
 		"company": "Infozahyst",
 		"subject" : "Secret information",
@@ -9,7 +26,7 @@
 		],
 		"date": [
 			"01.06.2016",
-			null
+			"03.06.2018"
 		],
 		"libs": [
 			"Angular1",
