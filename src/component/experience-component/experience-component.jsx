@@ -6,8 +6,8 @@ import ExperienceItemComponent from './experience-item-component/experience-item
 import {posXY, windowSize} from "../../asset/position";
 
 const stylClearPadding = {
-  padding: 0
-}
+  padding: '10px '
+};
 
 @connect((store) => {
   return {
