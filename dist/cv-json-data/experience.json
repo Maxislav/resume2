@@ -2,7 +2,7 @@
 	{
       "position": "JavaScript developer",
       "company": "Luxoft",
-      "subject" : "Exchange of documents in electronic form",
+      "subject" : "Firms can analyze their existing buy-side client population, identify which clients are impacted by regulatory changes and conduct regulatory outreach through customized outreach emails and custom questionnaires. Buy-side firms can efficiently respond to questionnaires and respond to requests for information or agree to terms for new legal documents that need to be repapered. Information exchanged on the platform is completely digitized, tracked and fed to downstream systems for regulatory reporting requirements.",
       "libs": [
         "Angular",
         "AngularJS"
@@ -12,7 +12,14 @@
         null
       ],
       "purpose": [
-        "Manage Negotiation, signing a document"
+		  "Provide and implement solutions for specified tasks.",
+		  "Create friendly user interface.",
+		  "Communication with product owners to find \"win-win\" solution in case of tech obstacles",
+		  "Take part in task planning.",
+		  "Write Unit Tests for new and existing components.",
+		  "Provide automatic testing while project building on QA servers.",
+		  "Support of features' implementation through all stages of velopment.",
+		  "Bug fixing and searching for their causes."
       ],
       "img": "./img/asset/luxoft-ico.png"
 	},
