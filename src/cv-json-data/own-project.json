@@ -102,7 +102,7 @@
     "ico": "./img/asset/any-control/ico.webp",
     "mainImg": "./img/asset/any-control/01.webp",
     "play_url": "https://play.google.com/store/apps/details?id=com.atlas.mars.objectcontrol&hl=en",
-    "description": "Приложение рассчитано на множество устройств и неограниченное количество команд. Любое управляемое с помощью SMS команд может быть внесено в память приложения. Для начала вы создаете объект который будете контролировать, и на странице всех команд добавляете связанные с объектом команды.    На главной странице находятся избранные команды, которые вы можете отправить. На странице всех команд может храниться полный список команд которые вы не используете но могут пригодиться. Для того чтобы команды были доступны для отправки вам нужно отметить их как избранные. Так же присутствует история отправленных команд. Если команда была доставлена ее дата отмечается зеленым цветом.",
+    "description": "The application is designed for many devices and can store unlimited number of command.Any devices managed via SMS commands can be stored in the application memory.    First, you need create an object and on the page of all commands add the commands associated with this particular object. Main screen contain selected commands that you can send. Screen of all commands can be stored a complete list of all commands that you don`t use but can come in handy later. For available sending command, you need to mark it as favorites. All history of the sent commands are stored. If a command has been delivered its date is marked as green.",
     "git_url": "https://github.com/Maxislav/ObjectControl",
     "imgs": [
       "./img/asset/any-control/01.webp",
