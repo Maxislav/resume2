@@ -1,4 +1,28 @@
 [
+
+	{
+		"position": "JavaScript developer",
+		"company": "EPAM",
+		"subject" : "Our menu of cloud-delivered or server-based technology solutions includes pharmacy management systems, automated central fill solutions, pharmacy business services and point-of-sale systems.",
+		"libs": [
+			"Angular (+ Material UI component library)"
+		],
+		"date": [
+			"01.02.2020",
+			null
+		],
+		"purpose": [
+			"Provide and implement solutions for specified tasks.",
+			"Create friendly user interface.",
+			"Communication with product owners to find \"win-win\" solution in case of tech obstacles",
+			"Take part in task planning.",
+			"Write Unit Tests for new and existing components.",
+			"Provide automatic testing while project building on QA servers.",
+			"Support of features' implementation through all stages of velopment.",
+			"Bug fixing and searching for their causes."
+		],
+		"img": "./img/asset/epam_logo.png"
+	},
 	{
       "position": "JavaScript developer",
       "company": "Luxoft",
@@ -9,7 +33,7 @@
       ],
       "date": [
         "03.06.2018",
-        null
+        "01.02.2020"
       ],
       "purpose": [
 		  "Provide and implement solutions for specified tasks.",
