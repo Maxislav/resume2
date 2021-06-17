@@ -50,7 +50,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "NODE_ENV=dev webpack-dev-server --inline",
+    "dev": "SET NODE_ENV=dev && webpack-dev-server --inline",
     "prod": "NODE_ENV=dev webpack",
     "super-prod": "webpack"
   },
