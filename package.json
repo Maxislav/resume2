@@ -2,7 +2,7 @@
   "name": "resume",
   "version": "1.0.0",
   "description": "my resume ",
-  "main": "servr-static/index.js",
+  "main": "dist/index.html",
   "dependencies": {
     "axios": "^0.19.2",
     "babel-core": "^6.25.0",
