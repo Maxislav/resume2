@@ -1,9 +1,37 @@
 [
+  {
+    "scope": "Android application",
+    "name": "GlideCalc",
+    "ico": "./img/asset/glide-calc/fiveico_512.png",
+    "mainImg": "./img/asset/glide-calc/mat-theme.PNG",
+    "play_url": "https://play.google.com/store/apps/details?id=com.atlas.mars.glidecon&hl=ru&gl=US",
+    "web_url": "http://maxislav.github.io/bike-atlas",
+    "git_url": "private",
+    "description":"Navigation application system",
+    "descriptionList": [
+      "Navigation for flight",
+      "Build|Save routes trip",
+      "Calc distances by altitude (for glider)",
+      "Display main parameters",
+      "Calculation params for lending"
+    ],
 
+    "imgs": [
+      "./img/asset/glide-calc/screen-shoot-1.jpg",
+      "./img/asset/glide-calc/Screenshot_2015-07-25-13-27-25.png",
+      "./img/asset/glide-calc/Screenshot_20210215-222221.jpg",
+      "./img/asset/glide-calc/unnamed.webp"
+
+    ],
+    "libs": [
+      "Java*, Kotlin*",
+      "Reactive programming (RxJava)"
+    ]
+  },
   {
     "scope": "Website",
     "name": "Bike-atlas",
-    "ico": "./img/asset/bike-atlas/icon.png",
+    "ico": "./img/asset/bike-atlas/main-ico.png",
     "mainImg": "./img/asset/bike-atlas/main.png",
     "play_url": "",
     "web_url": "http://maxislav.github.io/bike-atlas",
@@ -31,7 +59,7 @@
     "ico": "./img/asset/borispol-radar/icon.png",
     "mainImg": "./img/asset/borispol-radar/main-img.png",
     "play_url": "",
-    "web_url": "http://meteo-radar.info/#/radar",
+    "web_url": "http://meteo-info.kiev.ua/#/radar",
     "git_url": "https://github.com/Maxislav/borispol-radar2",
     "description":"Meteo-radar and Forecast. Automate calculate distance from rainfall or snowstorm to you location.",
     "descriptionList": [
